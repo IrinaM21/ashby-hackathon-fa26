@@ -1,222 +1,34 @@
 {
-  "_note": "MOCK teaching cases for building the UI. Clinical text, rubrics and references were drafted without pathologist review: have someone on the team check them, and replace the placeholder images with licensed H&E images (record source and license per case).",
   "cases": [
     {
-      "id": "skin-scc",
-      "title": "Case 1: Scalp lesion",
-      "organ": "Skin",
+      "id": "tcga-a8-a08s",
+      "title": "TCGA-A8-A08S: Breast",
+      "organ": "Breast",
       "time_limit_min": 10,
-      "image": "images/skin-scc.png",
-      "image_source": "Placeholder. Replace with a CC-licensed image.",
-      "image_license": "n/a",
+      "review_status": "draft",
+      "image": "images/tcga/TCGA-A8-A08S.png",
+      "image_source": "TCGA TCGA-A8-A08S-01Z-00-DX1.C0E044C2-FC3F-4E3D-A779-A725FF375F21.svs via NCI GDC",
+      "image_license": "TCGA open access (NIH GDC data use policy)",
       "clinical": {
-        "age_sex": "72-year-old man",
-        "history": "Retired farmer with decades of sun exposure. Enlarging, crusted, keratotic nodule on the scalp, present for about 4 months, occasionally bleeds.",
-        "specimen": "Shave biopsy, scalp vertex",
-        "gross": "Tan-white shave, 1.2 x 0.9 x 0.4 cm, with central crust."
+        "age_sex": "71-year-old patient",
+        "history": "Primary site: Breast.",
+        "specimen": "Not recorded",
+        "gross": "See report"
       },
       "rubric": [
         {
-          "id": "f1",
-          "section": "findings",
-          "label": "Atypical keratinocytes invading the dermis",
-          "weight": 3,
-          "keywords": [
-            "invasi",
-            "infiltrat",
-            "dermis",
-            "dermal"
-          ],
-          "partial_keywords": [
-            "atypical keratinocyte",
-            "atypia"
-          ]
-        },
-        {
-          "id": "f2",
-          "section": "findings",
-          "label": "Keratin pearls / keratinization",
-          "weight": 2,
-          "keywords": [
-            "keratin pearl",
-            "keratinization",
-            "keratinisation",
-            "squamous eddies"
-          ],
-          "partial_keywords": [
-            "keratin"
-          ]
-        },
-        {
-          "id": "f3",
-          "section": "findings",
-          "label": "Intercellular bridges",
-          "weight": 1,
-          "keywords": [
-            "intercellular bridge",
-            "desmosom"
-          ],
-          "partial_keywords": [
-            "bridge"
-          ]
-        },
-        {
-          "id": "f4",
-          "section": "findings",
-          "label": "Solar elastosis in background dermis",
-          "weight": 1,
-          "keywords": [
-            "solar elastosis",
-            "actinic damage"
-          ],
-          "partial_keywords": [
-            "elastosis",
-            "sun damage"
-          ]
-        },
-        {
           "id": "d1",
           "section": "diagnosis",
-          "label": "Invasive squamous cell carcinoma",
+          "label": "Poorly differentiated invasive ductal carcinoma (tumor diameter : 1.8 cm).",
           "weight": 4,
           "keywords": [
-            "squamous cell carcinoma",
-            "scc"
-          ],
-          "partial_keywords": [
-            "squamous",
-            "carcinoma"
-          ]
-        },
-        {
-          "id": "dd1",
-          "section": "differentials",
-          "label": "Keratoacanthoma",
-          "weight": 1,
-          "keywords": [
-            "keratoacanthoma"
-          ],
-          "partial_keywords": []
-        },
-        {
-          "id": "dd2",
-          "section": "differentials",
-          "label": "SCC in situ / actinic keratosis",
-          "weight": 1,
-          "keywords": [
-            "in situ",
-            "actinic keratosis",
-            "bowen"
-          ],
-          "partial_keywords": [
-            "actinic"
-          ]
-        },
-        {
-          "id": "a1",
-          "section": "ancillary",
-          "label": "Comment on margins / need for complete excision",
-          "weight": 1,
-          "keywords": [
-            "margin",
-            "excision"
-          ],
-          "partial_keywords": [
-            "re-excis"
-          ]
-        }
-      ],
-      "expert_answer": {
-        "diagnosis": "Invasive squamous cell carcinoma, well differentiated",
-        "summary": "Irregular nests of atypical keratinocytes extend into the dermis with keratin pearl formation and intercellular bridges. Background solar elastosis. Peripheral margin involvement should be reported; complete excision recommended."
-      },
-      "ancillary_results": {
-        "p40": "Diffuse strong nuclear positivity in tumour cells",
-        "CK5/6": "Positive"
-      },
-      "references": [
-        "WHO Classification of Tumours Editorial Board. Skin Tumours. WHO Classification of Tumours, 5th ed. Lyon: IARC.",
-        "PathologyOutlines.com, Skin nonmelanocytic tumor: Squamous cell carcinoma (verify link before demo)."
-      ]
-    },
-    {
-      "id": "colon-adenoca",
-      "title": "Case 2: Colonic mass",
-      "organ": "Colon",
-      "time_limit_min": 10,
-      "image": "images/colon-adenoca.png",
-      "image_source": "Placeholder. Replace with a CC-licensed image.",
-      "image_license": "n/a",
-      "clinical": {
-        "age_sex": "64-year-old woman",
-        "history": "Three months of change in bowel habit and fatigue. Iron-deficiency anaemia. Colonoscopy shows a friable, partly circumferential mass in the sigmoid colon.",
-        "specimen": "Endoscopic biopsies, sigmoid colon mass",
-        "gross": "Four fragments of tan tissue, 0.2 to 0.5 cm."
-      },
-      "rubric": [
-        {
-          "id": "f1",
-          "section": "findings",
-          "label": "Malignant glands invading beyond the muscularis mucosae",
-          "weight": 3,
-          "keywords": [
-            "submucosa",
-            "invasi",
-            "infiltrat"
-          ],
-          "partial_keywords": [
-            "malignant gland",
-            "atypical gland"
-          ]
-        },
-        {
-          "id": "f2",
-          "section": "findings",
-          "label": "Cribriform / complex gland architecture",
-          "weight": 2,
-          "keywords": [
-            "cribriform",
-            "back-to-back",
-            "complex gland"
-          ],
-          "partial_keywords": [
-            "architectur"
-          ]
-        },
-        {
-          "id": "f3",
-          "section": "findings",
-          "label": "Dirty (intraluminal) necrosis",
-          "weight": 1,
-          "keywords": [
-            "dirty necrosis",
-            "intraluminal necrosis",
-            "luminal necrosis"
-          ],
-          "partial_keywords": [
-            "necrosis"
-          ]
-        },
-        {
-          "id": "f4",
-          "section": "findings",
-          "label": "Desmoplastic stromal reaction",
-          "weight": 1,
-          "keywords": [
-            "desmoplas"
-          ],
-          "partial_keywords": [
-            "stromal reaction",
-            "fibrosis"
-          ]
-        },
-        {
-          "id": "d1",
-          "section": "diagnosis",
-          "label": "Invasive adenocarcinoma",
-          "weight": 4,
-          "keywords": [
-            "adenocarcinoma"
+            "not reported",
+            "reported",
+            "invasive ductal carcinoma",
+            "poorly differentiated",
+            "g iii",
+            "pt1n1a(sn)",
+            "lovoro"
           ],
           "partial_keywords": [
             "carcinoma",
@@ -224,237 +36,348 @@
           ]
         },
         {
-          "id": "dd1",
-          "section": "differentials",
-          "label": "Adenoma with high-grade dysplasia",
-          "weight": 1,
+          "id": "f1",
+          "section": "findings",
+          "label": "Microscopic feature",
+          "weight": 2,
           "keywords": [
-            "high-grade dysplasia",
-            "high grade dysplasia"
-          ],
-          "partial_keywords": [
-            "adenoma",
-            "dysplasia"
-          ]
-        },
-        {
-          "id": "dd2",
-          "section": "differentials",
-          "label": "Metastatic carcinoma to the colon",
-          "weight": 1,
-          "keywords": [
-            "metasta"
+            "poorly differentiated",
+            "invasive ductal carcinoma"
           ],
           "partial_keywords": []
         },
         {
           "id": "a1",
           "section": "ancillary",
-          "label": "Mismatch repair IHC (MLH1, PMS2, MSH2, MSH6) or MSI testing",
-          "weight": 2,
-          "keywords": [
-            "mismatch repair",
-            "mmr",
-            "mlh1",
-            "pms2",
-            "msh2",
-            "msh6",
-            "msi"
-          ],
-          "partial_keywords": [
-            "lynch"
-          ]
-        },
-        {
-          "id": "a2",
-          "section": "ancillary",
-          "label": "CK20 / CDX2 if origin is uncertain",
+          "label": "LOVORO",
           "weight": 1,
           "keywords": [
-            "ck20",
-            "cdx2",
-            "satb2"
+            "lovoro"
           ],
-          "partial_keywords": [
-            "ck7"
-          ]
+          "partial_keywords": []
+        },
+        {
+          "id": "o1",
+          "section": "ancillary",
+          "label": "Margin status",
+          "weight": 1,
+          "keywords": [
+            "positive"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "o2",
+          "section": "ancillary",
+          "label": "Lymph node status",
+          "weight": 1,
+          "keywords": [
+            "negative"
+          ],
+          "partial_keywords": []
         }
       ],
       "expert_answer": {
-        "diagnosis": "Invasive adenocarcinoma, moderately differentiated",
-        "summary": "Complex and cribriform malignant glands infiltrate desmoplastic stroma with intraluminal dirty necrosis. Recommend mismatch repair immunohistochemistry."
+        "diagnosis": "Poorly differentiated invasive ductal carcinoma (tumor diameter : 1.8 cm).",
+        "summary": "The report describes a poorly differentiated invasive ductal carcinoma with a tumor diameter of 1.8 cm, classified as G III, pT1N1a(sn), and LOVORO."
       },
       "ancillary_results": {
-        "MLH1": "Loss of nuclear expression",
-        "PMS2": "Loss of nuclear expression",
-        "MSH2": "Retained",
-        "MSH6": "Retained",
-        "CK20 / CDX2": "Positive / Positive"
+        "LOVORO": "LOVORO"
       },
       "references": [
-        "WHO Classification of Tumours Editorial Board. Digestive System Tumours. WHO Classification of Tumours, 5th ed. Lyon: IARC; 2019.",
-        "PathologyOutlines.com, Colon tumor: Adenocarcinoma (verify link before demo)."
-      ]
+        "TCGA case TCGA-A8-A08S, NCI Genomic Data Commons: https://portal.gdc.cancer.gov/cases/2779fa01-ac93-4e80-a997-3385f72172c3"
+      ],
+      "source": {
+        "tcga_case": "TCGA-A8-A08S",
+        "gdc_case_id": "2779fa01-ac93-4e80-a997-3385f72172c3",
+        "project": "TCGA-BRCA",
+        "report_file_id": "052310db-005c-46b3-88d4-f30ac4c596fc",
+        "slide_file_id": "51b5f240-8fa6-4f7b-9e5b-3370d30ca7b8",
+        "report_text": "reports/TCGA-A8-A08S.txt",
+        "report_text_source": "pdf text layer",
+        "patch": {
+          "level": 1,
+          "x": 21986,
+          "y": 13991,
+          "tissue_fraction": 1.0
+        }
+      }
     },
     {
-      "id": "breast-idc",
-      "title": "Case 3: Breast mass",
+      "id": "tcga-a8-a09c",
+      "title": "TCGA-A8-A09C: Breast",
       "organ": "Breast",
       "time_limit_min": 10,
-      "image": "images/breast-idc.png",
-      "image_source": "Placeholder. Replace with a CC-licensed image.",
-      "image_license": "n/a",
+      "review_status": "draft",
+      "image": "images/tcga/TCGA-A8-A09C.png",
+      "image_source": "TCGA TCGA-A8-A09C-01Z-00-DX1.19E0C0E9-0ED6-4E3A-95FE-A5778F5DDBCD.svs via NCI GDC",
+      "image_license": "TCGA open access (NIH GDC data use policy)",
       "clinical": {
-        "age_sex": "52-year-old woman",
-        "history": "Palpable, firm mass in the upper outer quadrant of the left breast. Mammogram shows a 2.1 cm spiculated mass (BI-RADS 5).",
-        "specimen": "Ultrasound-guided core needle biopsy, left breast",
-        "gross": "Three cores of tan-white tissue, up to 1.5 cm."
+        "age_sex": "69-year-old patient",
+        "history": "Primary site: Breast. Pathologic stage: Stage X.",
+        "specimen": "Resection / biopsy, Breast, NOS",
+        "gross": "See report"
       },
       "rubric": [
         {
-          "id": "f1",
-          "section": "findings",
-          "label": "Infiltrative nests and cords of tumour cells",
-          "weight": 3,
-          "keywords": [
-            "infiltrat",
-            "invasi",
-            "nests",
-            "cords"
-          ],
-          "partial_keywords": [
-            "tumour cells",
-            "tumor cells"
-          ]
-        },
-        {
-          "id": "f2",
-          "section": "findings",
-          "label": "Desmoplastic stroma",
-          "weight": 1,
-          "keywords": [
-            "desmoplas"
-          ],
-          "partial_keywords": [
-            "fibrotic stroma",
-            "stroma"
-          ]
-        },
-        {
-          "id": "f3",
-          "section": "findings",
-          "label": "Nuclear pleomorphism and mitoses (grading features)",
-          "weight": 2,
-          "keywords": [
-            "pleomorph",
-            "mitos",
-            "mitotic"
-          ],
-          "partial_keywords": [
-            "nuclear atypia",
-            "nottingham",
-            "grade"
-          ]
-        },
-        {
-          "id": "f4",
-          "section": "findings",
-          "label": "Tubule formation",
-          "weight": 1,
-          "keywords": [
-            "tubule"
-          ],
-          "partial_keywords": [
-            "gland formation"
-          ]
-        },
-        {
           "id": "d1",
           "section": "diagnosis",
-          "label": "Invasive breast carcinoma of no special type (ductal)",
+          "label": "Moderately differentiated invasive ductal breast carcinoma with a diameter of 2.2 cm extending cranially to within 5 mm of the resection margin at 3 and 12 o'clock.",
           "weight": 4,
           "keywords": [
-            "invasive ductal",
-            "no special type",
-            "nst",
-            "idc"
+            "infiltrating duct carcinoma, nos",
+            "infiltrating",
+            "duct",
+            "invasive ductal breast carcinoma",
+            "malignant tumor",
+            "breast cancer"
           ],
           "partial_keywords": [
             "carcinoma",
-            "ductal"
+            "malignan"
           ]
         },
         {
-          "id": "dd1",
-          "section": "differentials",
-          "label": "Invasive lobular carcinoma",
-          "weight": 1,
+          "id": "f1",
+          "section": "findings",
+          "label": "Microscopic feature",
+          "weight": 2,
           "keywords": [
-            "lobular"
+            "invasive ductal carcinoma"
           ],
           "partial_keywords": []
         },
         {
-          "id": "dd2",
-          "section": "differentials",
-          "label": "Benign mimics (sclerosing adenosis, radial scar)",
-          "weight": 1,
-          "keywords": [
-            "sclerosing adenosis",
-            "radial scar",
-            "complex sclerosing"
-          ],
-          "partial_keywords": [
-            "adenosis"
-          ]
-        },
-        {
           "id": "a1",
           "section": "ancillary",
-          "label": "ER, PR and HER2 testing",
-          "weight": 2,
+          "label": "Hematoxylin and Eosin (H&E) Stain",
+          "weight": 1,
           "keywords": [
-            "her2",
-            "estrogen receptor",
-            "oestrogen receptor",
-            "er",
-            "pr",
-            "er/pr"
+            "h&e staining",
+            "histological examination"
           ],
-          "partial_keywords": [
-            "hormone receptor"
-          ]
+          "partial_keywords": []
         },
         {
           "id": "a2",
           "section": "ancillary",
-          "label": "E-cadherin to exclude lobular",
+          "label": "Ki-67 Immunohistochemistry",
           "weight": 1,
           "keywords": [
-            "e-cadherin",
-            "e cadherin",
-            "ecadherin"
+            "ki-67 staining",
+            "immunohistochemical analysis"
           ],
-          "partial_keywords": [
-            "p120"
-          ]
+          "partial_keywords": []
+        },
+        {
+          "id": "a3",
+          "section": "ancillary",
+          "label": "Cytokeratin 19 Immunohistochemistry",
+          "weight": 1,
+          "keywords": [
+            "ck19 staining",
+            "cytokeratin immunohistochemistry"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "o1",
+          "section": "ancillary",
+          "label": "Margin status",
+          "weight": 1,
+          "keywords": [
+            "positive"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "o2",
+          "section": "ancillary",
+          "label": "Lymph node status",
+          "weight": 1,
+          "keywords": [
+            "negative"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "o3",
+          "section": "ancillary",
+          "label": "Sentinel lymph node status",
+          "weight": 1,
+          "keywords": [
+            "negative"
+          ],
+          "partial_keywords": []
         }
       ],
       "expert_answer": {
-        "diagnosis": "Invasive breast carcinoma of no special type (ductal), Nottingham grade 2",
-        "summary": "Infiltrating nests and cords of moderately pleomorphic cells with occasional tubule formation in desmoplastic stroma. ER, PR and HER2 testing recommended; E-cadherin retained."
+        "diagnosis": "Moderately differentiated invasive ductal breast carcinoma with a diameter of 2.2 cm extending cranially to within 5 mm of the resection margin at 3 and 12 o'clock.",
+        "summary": "The patient has a moderately differentiated invasive ductal breast carcinoma measuring 2.2 cm in diameter, which extends close to the surgical margins. The tumor is classified as M-8500 /3, G2, pT2, pN 0 (sn), MX, R0."
       },
       "ancillary_results": {
-        "ER": "Positive, 95% strong",
-        "PR": "Positive, 60% moderate",
-        "HER2 IHC": "1+ (negative)",
-        "E-cadherin": "Retained membranous staining",
-        "Ki-67": "About 20%"
+        "Hematoxylin and Eosin (H&E) Stain": "Positive for invasive ductal carcinoma",
+        "Ki-67 Immunohistochemistry": "Positive for Ki-67 expression",
+        "Cytokeratin 19 Immunohistochemistry": "Positive for cytokeratin 19 expression"
       },
       "references": [
-        "WHO Classification of Tumours Editorial Board. Breast Tumours. WHO Classification of Tumours, 5th ed. Lyon: IARC; 2019.",
-        "PathologyOutlines.com, Breast malignant: Invasive carcinoma of no special type (verify link before demo)."
-      ]
+        "TCGA case TCGA-A8-A09C, NCI Genomic Data Commons: https://portal.gdc.cancer.gov/cases/80f3f48a-cc21-415c-b181-c77e7ba1c563"
+      ],
+      "source": {
+        "tcga_case": "TCGA-A8-A09C",
+        "gdc_case_id": "80f3f48a-cc21-415c-b181-c77e7ba1c563",
+        "project": "TCGA-BRCA",
+        "report_file_id": "8d8c331b-d2b3-48b2-9050-53bac358be56",
+        "slide_file_id": "7719dfca-e5e8-4638-90a9-7d76115158d5",
+        "report_text": "reports/TCGA-A8-A09C.txt",
+        "report_text_source": "pdf text layer",
+        "patch": {
+          "level": 1,
+          "x": 26390,
+          "y": 36540,
+          "tissue_fraction": 0.98
+        }
+      }
+    },
+    {
+      "id": "tcga-bh-a1f5",
+      "title": "TCGA-BH-A1F5: Breast",
+      "organ": "Breast",
+      "time_limit_min": 10,
+      "review_status": "draft",
+      "image": "images/tcga/TCGA-BH-A1F5.png",
+      "image_source": "TCGA TCGA-BH-A1F5-01Z-00-DX1.9A1AA3BB-80B1-473D-B075-8D65A94C4E0B.svs via NCI GDC",
+      "image_license": "TCGA open access (NIH GDC data use policy)",
+      "clinical": {
+        "age_sex": "62-year-old patient",
+        "history": "Primary site: Breast. Pathologic stage: Stage IIA.",
+        "specimen": "Resection / biopsy, Breast, NOS",
+        "gross": "See report"
+      },
+      "rubric": [
+        {
+          "id": "d1",
+          "section": "diagnosis",
+          "label": "Infiltrating ductal carcinoma, Nottingham score 719",
+          "weight": 4,
+          "keywords": [
+            "infiltrating duct carcinoma, nos",
+            "infiltrating",
+            "duct",
+            "infiltrating ductal carcinoma",
+            "nottingham score 719",
+            "breast cancer"
+          ],
+          "partial_keywords": [
+            "carcinoma",
+            "malignan"
+          ]
+        },
+        {
+          "id": "f1",
+          "section": "findings",
+          "label": "Microscopic feature",
+          "weight": 2,
+          "keywords": [
+            "infiltrating ductal carcinoma",
+            "nottingham score 719"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "a1",
+          "section": "ancillary",
+          "label": "H&E staining",
+          "weight": 1,
+          "keywords": [
+            "h&e staining",
+            "positive for infiltrating ductal carcinoma"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "a2",
+          "section": "ancillary",
+          "label": "Immunohistochemistry (IHC)",
+          "weight": 1,
+          "keywords": [
+            "ihc",
+            "estrogen receptor positive",
+            "progesterone receptor positive",
+            "her2 negative"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "a3",
+          "section": "ancillary",
+          "label": "Chromogenic In Situ Hybridization (CISH)",
+          "weight": 1,
+          "keywords": [
+            "cish",
+            "negative for her2 amplification"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "o1",
+          "section": "ancillary",
+          "label": "Number of positive lymph nodes",
+          "weight": 1,
+          "keywords": [
+            "1 positive lymph node"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "o2",
+          "section": "ancillary",
+          "label": "Total number of lymph nodes examined",
+          "weight": 1,
+          "keywords": [
+            "9 lymph nodes examined"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "o3",
+          "section": "ancillary",
+          "label": "Sentinel node metastasis",
+          "weight": 1,
+          "keywords": [
+            "2 sentinel lymph nodes negative for tumor"
+          ],
+          "partial_keywords": []
+        }
+      ],
+      "expert_answer": {
+        "diagnosis": "Infiltrating ductal carcinoma, Nottingham score 719",
+        "summary": "The patient has infiltrating ductal carcinoma of the breast with a Nottingham score of 719, which is associated with microcalcifications and lymphovascular invasion."
+      },
+      "ancillary_results": {
+        "H&E staining": "Positive for infiltrating ductal carcinoma",
+        "Immunohistochemistry (IHC)": "Estrogen receptor positive, progesterone receptor positive, HER2 negative",
+        "Chromogenic In Situ Hybridization (CISH)": "Negative for HER2 amplification"
+      },
+      "references": [
+        "TCGA case TCGA-BH-A1F5, NCI Genomic Data Commons: https://portal.gdc.cancer.gov/cases/e663954c-05a8-479a-a623-400c1eb5efc6"
+      ],
+      "source": {
+        "tcga_case": "TCGA-BH-A1F5",
+        "gdc_case_id": "e663954c-05a8-479a-a623-400c1eb5efc6",
+        "project": "TCGA-BRCA",
+        "report_file_id": "b0a86a2e-0cec-4249-9c42-9a845df50515",
+        "slide_file_id": "a72f8128-d786-4025-96c4-b67f16adfcd9",
+        "report_text": "reports/TCGA-BH-A1F5.txt",
+        "report_text_source": "pdf text layer",
+        "patch": {
+          "level": 0,
+          "x": 69856,
+          "y": 502,
+          "tissue_fraction": 1.0
+        }
+      }
     }
-  ]
+  ],
+  "_note": "Cases with review_status 'draft' have model-drafted rubrics: check each rubric against data/reports/<case>.txt and set review_status to 'reviewed'."
 }
