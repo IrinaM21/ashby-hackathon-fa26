@@ -16,7 +16,7 @@ from pathlib import Path
 
 from utils import Utils
 import logging
-from confidence import score_findings, build_pool   # import the functions, NOT `import confidence`
+from confidence import score_findings, build_pool, match_percent   # import the functions, NOT `import confidence`
 
 log = logging.getLogger(__name__)
 
@@ -191,6 +191,16 @@ def grade_report(case, report, elapsed_s=None):
         except Exception:
             log.exception("CONCH confidence scoring failed for case %s", case.get("id"))
     scored["model_confidence"] = model_conf    # app.py ignores extra keys
+
+    # --- CONCH text match: student report vs this case's expert answer (shown alongside the rubric score) ---
+    scored["match_percent"] = None
+    student_text = " ".join(report.get(s, "").strip() for s in ("diagnosis", "findings")).strip()
+    if USE_CONCH and student_text:
+        try:
+            ans = case["expert_answer"]
+            scored["match_percent"] = round(match_percent(student_text, f"{ans['diagnosis']}. {ans['summary']}"))
+        except Exception:
+            log.exception("CONCH match scoring failed for case %s", case.get("id"))
 
     if model_conf:
         low = [s for s in model_conf if s["cosine"] < COS_THRESH]

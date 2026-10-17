@@ -1,6 +1,7 @@
 import os
 
 import torch
+import torch.nn.functional as F
 from huggingface_hub import hf_hub_download
 from timm.models import create_model
 
@@ -78,6 +79,15 @@ class Utils:
         _, token_probs = Utils._generated_token_probs(model_output)
         log_probs = token_probs[batch_index].clamp_min(1e-12).log()
         return log_probs.mean().exp().item() * 100
+
+    @staticmethod
+    def get_similarity_percent(a, b):
+        """Percent similarity (0-100) between a single pair of embeddings (each (d,) or (1, d)).
+
+        Cosine similarity with negatives clipped to 0. Unlike get_match_percents, this is an absolute score.
+        """
+        cos = F.cosine_similarity(a.float().reshape(1, -1), b.float().reshape(1, -1)).item()
+        return max(cos, 0.0) * 100
 
     @staticmethod
     def get_match_percents(model, a, b):
