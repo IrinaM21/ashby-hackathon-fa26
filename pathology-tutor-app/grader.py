@@ -15,6 +15,27 @@ from datetime import datetime
 from pathlib import Path
 
 from utils import Utils
+import logging
+from confidence import score_findings, build_pool   # import the functions, NOT `import confidence`
+
+log = logging.getLogger(__name__)
+
+# Model-confidence settings. Set COS_THRESH from your student-style calibration set.
+USE_CONCH = True
+COS_THRESH = 0.20          # PLACEHOLDER: tune on real student-style findings
+LOW_FRACTION = 0.5         # flag if more than this share of sentences fall below COS_THRESH
+CONF_SELF_RATING = 4       # student confidence at or above this counts as "confident"
+
+DATA_DIR = Path(__file__).parent / "data"
+POOL = None    
+
+def _get_pool():
+    global POOL
+    if POOL is None:
+        cases = json.loads((DATA_DIR / "cases.json").read_text())["cases"]
+        # Placeholder source: swap in whichever field holds each case's reference findings text.
+        POOL = build_pool([c["expert_answer"]["summary"] for c in cases])
+    return POOL
 
 STATUS_CREDIT = {"present": 1.0, "partial": 0.5, "missing": 0.0}
 SECTIONS = ["findings", "diagnosis", "differentials", "ancillary"]
@@ -160,6 +181,30 @@ def grade_report(case, report, elapsed_s=None):
         reasons.append("score below 50%")
     if diag_missed and confidence >= 4:
         reasons.append("confident but diagnosis not matched")
+
+    # --- CONCH image-text confidence on the findings (never blocks grading) ---
+    model_conf = None
+    if USE_CONCH and report.get("findings", "").strip():
+        try:
+            img_path = DATA_DIR / case["image"]
+            model_conf = score_findings(img_path, report["findings"], _get_pool())
+        except Exception:
+            log.exception("CONCH confidence scoring failed for case %s", case.get("id"))
+    scored["model_confidence"] = model_conf    # app.py ignores extra keys
+
+    if model_conf:
+        low = [s for s in model_conf if s["cosine"] < COS_THRESH]
+        if len(low) / len(model_conf) > LOW_FRACTION:
+            reasons.append("findings text poorly matches the slide")
+        if low and confidence >= CONF_SELF_RATING:
+            reasons.append("confident, but description fits the slide weakly")
+        if low:
+            # Hint only: do not name the diagnosis. Quoting the student's own sentence is fine.
+            scored["feedback"].append(
+                "Part of your description may not match what's on this slide. "
+                f'Re-read this against the image: "{low[0]["text"]}"'
+            )
+
     scored["flag_reasons"] = reasons
     if reasons:
         _queue_for_review(case, report, scored, elapsed_s)
@@ -172,6 +217,7 @@ def _queue_for_review(case, report, scored, elapsed_s):
         "case_id": case["id"],
         "percent": scored["percent"],
         "reasons": scored["flag_reasons"],
+        "model_confidence": scored.get("model_confidence"),   # new
         "elapsed_s": elapsed_s,
         "report": report,
     }
