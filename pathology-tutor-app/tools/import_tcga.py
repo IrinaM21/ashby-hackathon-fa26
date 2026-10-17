@@ -58,21 +58,25 @@ def gdc_post(endpoint, filters, fields, size):
 
 
 def find_cases(project, n, case_ids=None):
-    filters = [
-        _eq("files.data_type", "Pathology Report"),
-        _eq("files.experimental_strategy", "Diagnostic Slide"),
-    ]
-    filters.append(_eq("submitter_id", case_ids) if case_ids else _eq("project.project_id", project))
-    return gdc_post("cases", filters, CASE_FIELDS, size=len(case_ids) if case_ids else n)
+    # Only filter by project here; whether a case has a report and a slide is checked per case,
+    # which is more forgiving than nested file filters on the cases endpoint.
+    filters = [_eq("submitter_id", case_ids) if case_ids else _eq("project.project_id", project)]
+    return gdc_post("cases", filters, CASE_FIELDS, size=len(case_ids) if case_ids else max(n * 5, 20))
+
+
+def _is_diagnostic(f):
+    # FFPE diagnostic slides are labelled "Diagnostic Slide" and have "-DX" in the file name.
+    return f.get("experimental_strategy") == "Diagnostic Slide" or "-DX" in f.get("file_name", "").upper()
 
 
 def case_files(submitter_id):
-    hits = gdc_post("files", [_eq("cases.submitter_id", submitter_id),
-                              _eq("access", "open"),
-                              _eq("data_type", ["Pathology Report", "Slide Image"])], FILE_FIELDS, size=50)
-    report = next((f for f in hits if f["data_type"] == "Pathology Report"), None)
-    slides = [f for f in hits if f["data_type"] == "Slide Image" and f.get("experimental_strategy") == "Diagnostic Slide"]
+    hits = gdc_post("files", [_eq("cases.submitter_id", submitter_id), _eq("access", "open")], FILE_FIELDS, size=200)
+    report = next((f for f in hits if f.get("data_type") == "Pathology Report"), None)
+    slides = [f for f in hits if f.get("data_type") == "Slide Image" and _is_diagnostic(f)]
     slide = min(slides, key=lambda f: f.get("file_size", 0)) if slides else None  # smallest = quickest download
+    if not (report and slide):
+        types = sorted({f"{f.get('data_type')}/{f.get('experimental_strategy')}" for f in hits})
+        print(f"   open files found: {len(hits)} ({', '.join(types[:8]) or 'none'})")
     return report, slide
 
 
@@ -347,10 +351,19 @@ def main(argv=None):
     model = None if args.no_model else Model(args.model)
 
     cases = find_cases(args.project, args.n, args.case_ids)
-    print(f"Found {len(cases)} case(s) with a report and a diagnostic slide")
-    built = [c for c in (build_case(c, model, args.slides_dir, work) for c in cases) if c]
+    print(f"Found {len(cases)} candidate case(s) in {args.case_ids or args.project}")
+    built = []
+    for case in cases:
+        if len(built) >= (len(args.case_ids) if args.case_ids else args.n):
+            break
+        c = build_case(case, model, args.slides_dir, work)
+        if c:
+            built.append(c)
 
     out = Path(args.out)
+    if not built:
+        print(f"\nNo cases built, so {out} was left unchanged.")
+        return 1
     existing = json.loads(out.read_text()) if (args.append and out.exists()) else {"cases": []}
     ids = {c["id"] for c in built}
     existing["cases"] = [c for c in existing["cases"] if c["id"] not in ids] + built
