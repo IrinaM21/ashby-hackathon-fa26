@@ -80,14 +80,14 @@ class Utils:
         return log_probs.mean().exp().item() * 100
 
     @staticmethod
-    def get_match_percents(model, image_embeddings, text_embeddings):
+    def get_match_percents(model, a, b):
         """Turn image-text cosine similarities into percent match across the text candidates.
 
-        image_embeddings: (n_images, d), text_embeddings: (n_texts, d), both from MUSK with out_norm=True.
+        a: (n_images, d), b: (n_texts, d), image or text embeddings with out_norm=True.
         Returns (n_images, n_texts); each row sums to 100. Percents are relative to the candidates given.
         Scales by model.logit_scale as in MUSK's demo.ipynb.
         """
-        cos = image_embeddings.float() @ text_embeddings.float().T
+        cos = a.float() @ b.float().T
         return (model.logit_scale.float() * cos).softmax(dim=-1) * 100
 
 
