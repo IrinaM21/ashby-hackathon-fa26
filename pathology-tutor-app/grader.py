@@ -17,6 +17,7 @@ from pathlib import Path
 from utils import Utils
 import logging
 from confidence import score_findings, build_pool, match_percent   # import the functions, NOT `import confidence`
+from llm_grader import modelchecklist
 
 log = logging.getLogger(__name__)
 
@@ -85,12 +86,7 @@ def stub_checklist(case, report):
 
 
 def model_checklist(case, report):
-    """TODO (model owner): call Qwen2.5-VL here and return the same shape as stub_checklist.
-
-    Tips from the review: generate with do_sample=False, cap max_new_tokens,
-    parse the JSON in try/except and retry once, raise on a second failure.
-    """
-    raise NotImplementedError
+    return modelchecklist(case, report)
 
 
 def get_checklist(case, report):
