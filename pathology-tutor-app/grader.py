@@ -14,6 +14,8 @@ import re
 from datetime import datetime
 from pathlib import Path
 
+from utils import Utils
+
 STATUS_CREDIT = {"present": 1.0, "partial": 0.5, "missing": 0.0}
 SECTIONS = ["findings", "diagnosis", "differentials", "ancillary"]
 SECTION_LABELS = {
