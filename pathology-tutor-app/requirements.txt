@@ -1,0 +1,7 @@
+gradio>=6.0,<7
+pillow
+# Added when the model is plugged in (pin versions once they work):
+# torch
+# transformers>=4.49
+# accelerate
+# qwen-vl-utils
