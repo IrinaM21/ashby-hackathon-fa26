@@ -1,0 +1,11 @@
+# MUSK repo
+MUSK/
+
+# Virtual environments
+avenv/
+venv/
+.venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
