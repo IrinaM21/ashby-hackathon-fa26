@@ -1,0 +1,12 @@
+# Extra packages for tools/import_tcga.py (run on Delta, not needed for the app itself)
+requests
+pypdf
+pypdfium2
+openslide-python
+openslide-bin
+numpy
+pillow
+# For the model (OCR of scanned reports + rubric drafting); skip with --no-model
+torch
+transformers>=4.49
+accelerate

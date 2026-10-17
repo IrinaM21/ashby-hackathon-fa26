@@ -36,14 +36,16 @@ CSS = """
 
 def clinical_md(case):
     c = case["clinical"]
-    return (
+    md = (
         f"### {case['title']} · {case['organ']}\n"
         f"**Patient:** {c['age_sex']}  \n"
         f"**History:** {c['history']}  \n"
         f"**Specimen:** {c['specimen']}  \n"
         f"**Gross:** {c['gross']}\n\n"
-        f"<sub>Image: {case['image_source']} ({case['image_license']})</sub>"
     )
+    if case.get("review_status") == "draft":
+        md += "⚠️ *Draft rubric from the source report, not yet reviewed by the team.*\n\n"
+    return md + f"<sub>Image: {case['image_source']} ({case['image_license']})</sub>"
 
 
 def fmt_clock(seconds):
