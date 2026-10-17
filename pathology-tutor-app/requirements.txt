@@ -1,5 +1,13 @@
 gradio>=6.0,<7
 pillow
+# utils.py (MUSK)
+torch==2.0.1
+torchvision==0.15.2
+timm==0.9.8
+numpy==1.26.4
+huggingface-hub
+safetensors
+einops
 # Added when the model is plugged in (pin versions once they work):
 # torch
 # transformers>=4.49
