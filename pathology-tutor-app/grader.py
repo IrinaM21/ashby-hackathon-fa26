@@ -16,7 +16,7 @@ from pathlib import Path
 
 from utils import Utils
 import logging
-from confidence import score_findings, build_pool, match_percent   # import the functions, NOT `import confidence`
+from confidence import score_findings, build_pool, match_percent, word_scores   # import the functions, NOT `import confidence`
 from llm_grader import modelchecklist, grade_text_only
 
 log = logging.getLogger(__name__)
@@ -198,6 +198,19 @@ def grade_report(case, report, elapsed_s=None):
             scored["match_percent"] = round(match_percent(student_text, f"{ans['diagnosis']}. {ans['summary']}"))
         except Exception:
             log.exception("CONCH match scoring failed for case %s", case.get("id"))
+
+    # --- CONCH word scores per report section: which of the student's words pull toward / away from the expert ---
+    # The diagnosis field is compared with the expert diagnosis alone; other fields with diagnosis + summary.
+    scored["word_scores"] = {}
+    if USE_CONCH:
+        ans = case["expert_answer"]
+        for section in SECTIONS:
+            if report.get(section, "").strip():
+                expert_text = ans["diagnosis"] if section == "diagnosis" else f"{ans['diagnosis']}. {ans['summary']}"
+                try:
+                    scored["word_scores"][section] = word_scores(report[section], expert_text)
+                except Exception:
+                    log.exception("CONCH word scoring failed for case %s, section %s", case.get("id"), section)
 
     # --- Claude's Socratic explanation of the match, shown before the reveal (never blocks grading) ---
     scored["tutor_feedback"] = None

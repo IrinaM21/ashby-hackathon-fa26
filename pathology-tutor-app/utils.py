@@ -57,17 +57,18 @@ class Utils:
     CONCH_MODEL_CFG = "conch_ViT-B-16"
     CONCH_LOCAL_PATH = Path(__file__).parent / "weights" / "conch.pt"
     # The public release has no caption decoder weights (removed by MahmoodLab), so CONCH builds the
-    # decoder with random weights. This file pins one random init so it's the same on every load,
-    # and is where trained decoder weights would go.
+    # decoder with random weights. Trained decoder weights would go here; save_conch_weights doesn't write it.
     CONCH_DECODER_PATH = Path(__file__).parent / "weights" / "conch_text_decoder.pt"
 
     @staticmethod
-    def load_conch(device=None, weights_path=CONCH_LOCAL_PATH, decoder_path=CONCH_DECODER_PATH):
+    def load_conch(device=None, weights_path=CONCH_LOCAL_PATH, decoder_path=None):
         """Load the pretrained CONCH model.
 
         Uses weights_path (written by save_conch_weights) if it exists, so no Hugging Face call;
         otherwise downloads from https://huggingface.co/MahmoodLab/conch. Pass weights_path=None to force the download.
-        Loads decoder_path into model.text_decoder if it exists; otherwise the decoder stays randomly initialized.
+        The caption decoder isn't used by encode_image / encode_text, so it's only loaded when asked for:
+        pass decoder_path (e.g. Utils.CONCH_DECODER_PATH) to load it into model.text_decoder; otherwise it stays
+        randomly initialized.
         Returns (model, preprocess), where preprocess turns a PIL image into the model's input tensor.
         """
         device = torch.device(device) if device is not None else Utils.get_device()
@@ -99,26 +100,22 @@ class Utils:
         return F.pad(torch.tensor(ids), (0, 1), value=tokenizer.pad_token_id)
 
     @staticmethod
-    def save_conch_weights(path=CONCH_LOCAL_PATH, decoder_path=CONCH_DECODER_PATH, dtype=torch.float32, seed=0):
-        """Download CONCH from Hugging Face once and save it locally.
+    def save_conch_weights(path=CONCH_LOCAL_PATH, dtype=torch.float32):
+        """Download CONCH from Hugging Face once and save the released weights (vision + text encoders) to path.
 
-        path gets the released weights (vision + text encoders), identical to the Hugging Face checkpoint.
-        decoder_path gets the caption decoder, a seeded random init since no trained weights were released.
-        fp32 by default, matching the Hugging Face checkpoint; dtype=torch.float16 halves the file sizes.
+        Identical to the Hugging Face checkpoint at the default fp32; dtype=torch.float16 halves the file size.
+        The untrained caption decoder (text_decoder.*) is left out, as in the released checkpoint.
         """
-        path, decoder_path = Path(path), Path(decoder_path)
+        path = Path(path)
         path.parent.mkdir(parents=True, exist_ok=True)
-        with torch.random.fork_rng():   # seed the decoder init without changing the caller's RNG state
-            torch.manual_seed(seed)
-            model, _ = Utils.load_conch(device="cpu", weights_path=None, decoder_path=None)
-
-        def cast(sd):
-            return {k: v.to(dtype) if v.is_floating_point() else v for k, v in sd.items()}
-
-        state_dict = model.state_dict()
-        torch.save(cast({k: v for k, v in state_dict.items() if not k.startswith("text_decoder.")}), path)
-        torch.save(cast(model.text_decoder.state_dict()), decoder_path)
-        return path, decoder_path
+        model, _ = Utils.load_conch(device="cpu", weights_path=None)
+        encoders = {
+            k: v.to(dtype) if v.is_floating_point() else v
+            for k, v in model.state_dict().items()
+            if not k.startswith("text_decoder.")
+        }
+        torch.save(encoders, path)
+        return path
 
     @staticmethod
     def _generated_token_probs(model_output):
@@ -211,6 +208,38 @@ class Utils:
         return [left, top, left + side, top + side]
 
     @staticmethod
+    def _encode_image_keep_last_block(model, img):
+        """Same as model.encode_image(img, proj_contrast=True, normalize=True), also returning the last ViT block's tokens.
+
+        Mirrors timm's VisionTransformer.forward_features and CONCH's VisionTower.forward (attentional pooling),
+        so the tokens are an ordinary value instead of something a forward hook has to catch.
+        """
+        visual, trunk = model.visual, model.visual.trunk
+        x = trunk.norm_pre(trunk.patch_drop(trunk._pos_embed(trunk.patch_embed(img))))
+        tokens = trunk.blocks(x)
+        pooled = visual.ln_contrast(visual.attn_pool_contrast(trunk.norm(tokens))[:, 0])
+        return F.normalize(pooled @ visual.proj_contrast, dim=-1), tokens
+
+    @staticmethod
+    def _encode_text_from_embeddings(model, ids, embeddings):
+        """Same as model.encode_text(ids, normalize=True), starting from token embeddings.
+
+        ids: (batch, 128) from conch_tokenize. embeddings: (batch, 127, width), the token embeddings of
+        ids[:, :-1] (encode_text drops the last position to make room for <cls>).
+        Mirrors CONCH's TextTransformer.forward from the embedding step on, so modified embeddings can be passed in.
+        """
+        text = model.text
+        ids = ids[:, :-1]
+        cast_dtype = text.transformer.get_cast_dtype()
+        seq_len = ids.shape[1] + 1
+        x = torch.cat([embeddings.to(cast_dtype), text._repeat(text.cls_emb, embeddings.shape[0])], dim=1)
+        attn_mask = text.attn_mask[None, :seq_len, :seq_len] + text.build_cls_mask(ids, cast_dtype)[:, :seq_len, :seq_len]
+        x = x + text.positional_embedding[:seq_len].to(cast_dtype)
+        x = text.transformer(x.permute(1, 0, 2), attn_mask=attn_mask).permute(1, 0, 2)
+        pooled = text.ln_final(x[:, -1]) @ text.text_projection
+        return F.normalize(pooled, dim=-1)
+
+    @staticmethod
     def gradcam_heatmap(model, preprocess, image_path, text, contrast_text):
         """Grad-CAM of cos(image, text) - cos(image, contrast_text) on CONCH's last ViT block.
 
@@ -221,28 +250,19 @@ class Utils:
         """
         device = next(model.parameters()).device
         image = Image.open(image_path).convert("RGB")
-        img = preprocess(image).unsqueeze(0).to(device).requires_grad_(True)   # builds the graph
+        img = preprocess(image).unsqueeze(0).to(device)
         te = Utils._conch_text_embedding(model, text)
         tc = Utils._conch_text_embedding(model, contrast_text)
 
-        acts = {}
-        def keep_tokens(_module, _inputs, out):
-            out.retain_grad()
-            acts["tokens"] = out
-        handle = model.visual.trunk.blocks[-1].register_forward_hook(keep_tokens)
-        try:
-            with torch.enable_grad():
-                ie = model.encode_image(img, proj_contrast=True, normalize=True)
-                sim, contrast_sim = (ie @ te.T).squeeze(), (ie @ tc.T).squeeze()
-                (sim - contrast_sim).backward()
-        finally:
-            handle.remove()
-            model.zero_grad(set_to_none=True)   # backward also filled weight grads; drop them
+        with torch.enable_grad():
+            ie, block_tokens = Utils._encode_image_keep_last_block(model, img)
+            sim, contrast_sim = (ie @ te.T).squeeze(), (ie @ tc.T).squeeze()
+            (grads,) = torch.autograd.grad(sim - contrast_sim, block_tokens)   # only the tokens' gradient, no weight grads
 
         n_prefix = model.visual.trunk.num_prefix_tokens
-        tokens = acts["tokens"][0, n_prefix:]          # (n_patches, channels)
-        grads = acts["tokens"].grad[0, n_prefix:]
-        cam = (tokens * grads.mean(0)).sum(-1).relu().detach()
+        tokens = block_tokens[0, n_prefix:].detach()   # (n_patches, channels)
+        grads = grads[0, n_prefix:]
+        cam = (tokens * grads.mean(0)).sum(-1).relu()
         if cam.max() > 0:
             cam = cam / cam.max()
         side = int(cam.numel() ** 0.5)
@@ -252,6 +272,65 @@ class Utils:
             "similarity": round(sim.item(), 4),
             "contrast_similarity": round(contrast_sim.item(), 4),
         }
+
+    @staticmethod
+    def gradcam_text(model, tokenizer, student_text, expert_text, steps=32):
+        """Which words in student_text move cos(student, expert) up or down, by CONCH text embedding.
+
+        Integrated gradients on CONCH's token embeddings, summed per word: each word's embedding moves from the
+        <pad> embedding (the "no word" baseline) to its real value in `steps` steps, and the gradients along the
+        way are averaged. Word scores add up to cos(student, expert) - cos(baseline, expert).
+        Returns {"similarity": cos(student, expert), "words": [{"word", "start", "end", "score", "raw"}, ...]}
+        in reading order. Positive pulls the student's text toward the expert's, negative pulls it away.
+        score is scaled to -1..1 within this text; raw is unscaled (cosine units), so it's comparable across texts.
+        Uses only the student's words, so it's safe to show before the reveal.
+        """
+        device = next(model.parameters()).device
+        enc = tokenizer(
+            [student_text],
+            max_length=127,
+            add_special_tokens=True,
+            return_token_type_ids=False,
+            truncation=True,
+            padding="max_length",
+            return_offsets_mapping=True,
+        )
+        offsets = enc["offset_mapping"][0]
+        ids = F.pad(torch.tensor(enc["input_ids"]), (0, 1), value=tokenizer.pad_token_id).to(device)
+        te = Utils._conch_text_embedding(model, expert_text)
+
+        with torch.no_grad():
+            real = model.text.token_embedding(ids[:, :-1])                  # (1, 127, width)
+            pad = model.text.token_embedding.weight[tokenizer.pad_token_id]
+        # Only the student's word tokens move; <start>, <end> and padding keep their real embeddings.
+        is_word = torch.tensor([end > start for start, end in offsets], device=device).view(1, -1, 1)
+        baseline = torch.where(is_word, pad, real)
+        alphas = (torch.arange(1, steps + 1, device=device, dtype=torch.float32) / steps).view(-1, 1, 1)
+        path = (baseline + alphas * (real - baseline)).requires_grad_(True)  # (steps, 127, width)
+
+        with torch.enable_grad():
+            se = Utils._encode_text_from_embeddings(model, ids.expand(steps, -1), path)
+            sims = (se @ te.T).squeeze(-1)                                   # the last step is the real text
+            (grad,) = torch.autograd.grad(sims.sum(), path)
+        sim = sims[-1].item()
+        token_scores = ((real - baseline)[0] * grad.mean(0)).sum(-1).cpu().tolist()
+
+        words = [
+            {"word": m.group(), "start": m.start(), "end": m.end(), "score": 0.0}
+            for m in re.finditer(r"[A-Za-z0-9][A-Za-z0-9'/-]*", student_text)
+        ]
+        for (start, end), score in zip(offsets, token_scores):
+            if end <= start:                                   # special and padding tokens
+                continue
+            for w in words:
+                if start < w["end"] and end > w["start"]:      # overlap: token offsets include the leading space
+                    w["score"] += score
+                    break
+        peak = max((abs(w["score"]) for w in words), default=0.0)
+        for w in words:
+            w["raw"] = round(w["score"], 5)                    # cosine units; comparable across texts
+            w["score"] = round(w["score"] / peak, 3) if peak > 0 else 0.0
+        return {"similarity": round(sim, 4), "words": words}
 
     @staticmethod
     @torch.no_grad()
@@ -264,25 +343,31 @@ class Utils:
         device = next(model.parameters()).device
         img = preprocess(Image.open(image_path).convert("RGB")).unsqueeze(0).to(device)
         direction = Utils._heatmap_direction(model, text, contrast_text)
-        patch = model.visual.trunk.patch_embed.patch_size[0]
         side = len(grid)
-
-        def sim_without(cells):
-            x = img.clone()
-            for i in cells:
-                r, c = divmod(int(i), side)
-                x[..., r * patch:(r + 1) * patch, c * patch:(c + 1) * patch] = 0
-            return (model.encode_image(x, proj_contrast=True, normalize=True) @ direction.T).item()
 
         flat = torch.tensor(grid).flatten()
         k = max(1, int(frac * flat.numel()))
         gen = torch.Generator().manual_seed(seed)
-        random_sims = [sim_without(torch.randperm(flat.numel(), generator=gen)[:k]) for _ in range(n_random)]
+        random_sims = [
+            Utils._score_without_cells(model, img, direction, torch.randperm(flat.numel(), generator=gen)[:k], side)
+            for _ in range(n_random)
+        ]
         return {
-            "original": sim_without([]),
-            "top_blanked": sim_without(flat.topk(k).indices),
+            "original": Utils._score_without_cells(model, img, direction, [], side),
+            "top_blanked": Utils._score_without_cells(model, img, direction, flat.topk(k).indices, side),
             "random_blanked": sum(random_sims) / n_random,
         }
+
+    @staticmethod
+    @torch.no_grad()
+    def _score_without_cells(model, img, direction, cells, side):
+        """Image embedding . direction after setting the given cells of a side x side grid to 0 (the mean color)."""
+        patch = model.visual.trunk.patch_embed.patch_size[0]
+        x = img.clone()
+        for i in cells:
+            r, c = divmod(int(i), side)
+            x[..., r * patch:(r + 1) * patch, c * patch:(c + 1) * patch] = 0
+        return (model.encode_image(x, proj_contrast=True, normalize=True) @ direction.T).item()
 
     @staticmethod
     def _expert_text(case):
@@ -298,20 +383,25 @@ class Utils:
     def _cases_json_dumps(data):
         # Same layout as import_tcga.py, but keep each row of numbers on one line instead of one number per line.
         text = json.dumps(data, indent=2, ensure_ascii=False)
-        return re.sub(r"\[\s*([-0-9.eE,\s]+?)\s*\]", lambda m: "[" + re.sub(r",\s+", ", ", m.group(1)) + "]", text)
+        return re.sub(r"\[\s*([-0-9.eE,\s]+?)\s*\]", Utils._one_line_numbers, text)
 
     @staticmethod
-    def make_heatmaps(cases_path=CASES_PATH, force=False, device=None):
+    def _one_line_numbers(match):
+        """re.sub callback for _cases_json_dumps: "[\\n 1,\\n 2\\n]" -> "[1, 2]"."""
+        return "[" + re.sub(r",\s+", ", ", match.group(1)) + "]"
+
+    @staticmethod
+    def make_heatmaps(model, preprocess, cases_path=CASES_PATH, force=False):
         """Precompute a heatmap of the expert answer vs normal tissue for each case's image and store it in cases.json.
 
         The map shows what in the tile makes CONCH match the expert answer more than "normal <organ> tissue".
         Skips cases whose image, texts, and method are unchanged unless force=True.
-        Run from the app folder: python -c "from utils import Utils; Utils.make_heatmaps()"
+        Takes an already-loaded CONCH (from Utils.load_conch) so it isn't loaded twice. From the app folder:
+            python -c "from utils import Utils; Utils.make_heatmaps(*Utils.load_conch())"
         """
         cases_path = Path(cases_path)
         data_dir = cases_path.parent
         data = json.loads(cases_path.read_text())
-        model, preprocess = Utils.load_conch(device)
 
         for case in data["cases"]:
             image_path = data_dir / case["image"]
@@ -337,6 +427,7 @@ class Utils:
         cases_path.write_text(Utils._cases_json_dumps(data))
         print("wrote", cases_path)
 
+    # Jet-style color map anchors: blue (low) -> cyan -> green -> yellow -> red (high).
     # Jet-style color map anchors: blue (low) -> cyan -> green -> yellow -> red (high).
     _HEATMAP_STOPS = [0.0, 0.25, 0.5, 0.75, 1.0]
     _HEATMAP_COLORS = np.array([[0, 0, 255], [0, 255, 255], [0, 255, 0], [255, 255, 0], [255, 0, 0]], dtype=np.float32)

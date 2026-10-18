@@ -29,7 +29,14 @@ DISCLAIMER = (
     "**Educational use only. Not for clinical diagnosis.** Cases and feedback are for teaching. "
     "Pathology foundation models used here (e.g. MUSK, CONCH) are licensed for non-commercial research use only."
 )
-STATUS_ICON = {"present": "✅ present", "partial": "🟡 partial", "missing": "❌ missing"}
+# A word is marked when its raw CONCH score (cosine units, see Utils.gradcam_text) is at or below this.
+# -0.10 from a 3-case check: catches most wrong words but also marks some correct ones. Tune on real reports.
+MISTAKE_THRESHOLD = -0.10
+# Never marked: carry no pathology meaning. Negations ("no", "not", "without") are deliberately not here.
+STOPWORDS = {
+    "a", "an", "the", "and", "or", "of", "with", "in", "on", "at", "to", "for", "from", "by", "as",
+    "is", "are", "was", "were", "be", "been", "this", "that", "these", "those", "it", "its", "there", "has", "have",
+}
 
 CSS = """
 #timer, #timer p {font-size: 1.6em; font-weight: 600; text-align: right;}
@@ -50,6 +57,21 @@ def clinical_md(case):
     if case.get("review_status") == "draft":
         md += "⚠️ *Draft rubric from the source report, not yet reviewed by the team.*\n\n"
     return md + f"<sub>Image: {case['image_source']} ({case['image_license']})</sub>"
+
+
+def wording_md(text, words):
+    """The student's text with words that pull away from the expert answer (per CONCH) marked as likely mistakes."""
+    if not text.strip():
+        return "—"
+    out, pos = [], 0
+    for w in words:
+        out.append(text[pos:w["start"]])
+        word = text[w["start"]:w["end"]]
+        mistake = w["raw"] <= MISTAKE_THRESHOLD and word.lower() not in STOPWORDS
+        out.append(f"**⚠ {word}**" if mistake else word)
+        pos = w["end"]
+    out.append(text[pos:])
+    return "".join(out)
 
 
 def fmt_clock(seconds):
@@ -114,9 +136,11 @@ def submit_report(session, findings, diagnosis, differentials, ancillary, confid
         [grader.SECTION_LABELS[s], f"{v['earned']:g} / {v['total']:g}"]
         for s, v in result["sections"].items()
     ]
+    word_scores = result.get("word_scores", {})
     checklist = [
-        [grader.SECTION_LABELS[r["section"]], r["label"], STATUS_ICON[r["status"]],
-         f"{r['earned']:g} / {r['weight']:g}", r["reason"]]
+        [grader.SECTION_LABELS[r["section"]],
+         wording_md(report.get(r["section"], ""), word_scores.get(r["section"], [])),
+         f"{r['earned']:g} / {r['weight']:g}"]
         for r in result["items"]
     ]
 
@@ -213,8 +237,10 @@ with gr.Blocks(title="Pathology Report Tutor") as demo:
             sections_df = gr.Dataframe(headers=["Section", "Points"], interactive=False, label="By section", scale=1)
             feedback_md = gr.Markdown()
         tutor_md = gr.Markdown()
-        checklist_df = gr.Dataframe(headers=["Section", "Rubric item", "Status", "Points", "Why"],
-                                    interactive=False, wrap=True, label="Rubric checklist")
+        checklist_df = gr.Dataframe(headers=["Section", "Your wording", "Points"],
+                                    datatype=["str", "markdown", "str"],
+                                    interactive=False, wrap=True,
+                                    label="Rubric checklist (⚠ = words that pull your report away from the expert's)")
         with gr.Accordion("Reveal expert answer", open=False):
             reveal_md = gr.Markdown()
             heatmap_img = gr.Image(label="Model attention (white box = region analysed)",

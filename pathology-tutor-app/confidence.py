@@ -40,3 +40,8 @@ def match_percent(student_text, reference_text):
     """Percent similarity (0-100) between the student's text and the case's reference text."""
     student_emb, reference_emb = embed_texts([student_text, reference_text])
     return Utils.get_similarity_percent(student_emb, reference_emb)
+
+def word_scores(student_text, reference_text):
+    """Per-word scores (-1..1) for how each of the student's words moves their text toward (+) or away from (-)
+    the reference text, by CONCH. See Utils.gradcam_text."""
+    return Utils.gradcam_text(_model, _tok, student_text, reference_text)["words"]
