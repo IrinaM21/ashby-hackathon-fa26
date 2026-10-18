@@ -1,0 +1,101 @@
+TCGA-44-3918 
+SPECIMEN 
+A. Left upper lobe FS 
+B. Node level 5 
+c. Node level 1 
+D. Left upper lobe 
+E. Node level 7 
+F. Node level 4 
+G. Node level 9 
+CLINICAL NOTES 
+PRE-OP DIAGNOSIS: Lung mass. 
+FROZEN SECTION DIAGNOSIS 
+FSA) Left upper lobe - Poorly differentiated adenocarcinoma. 
+ 
+ 
+GROSS DESCRIPTION 
+A. Submitted fresh for frozen and tissue procurement 
+labeled "left upper lobe" is a wedge resection of 
+pulmonary 
+of 
+one 
+is 
+tissue, which has a small incision previously made within it. The 
+t.vedge measures maximally 7 x 4 x 3 em. Next to the incision site 
+there is some puckering of the pleura, which overlies a palpable 
+lung mass. Sutures are removed from the specimen and is then 
+serially sectioned. Sections through the specimen reveals a 
+puckered firm tan tumor mass immediately below the pleural surface 
+measuring maximally 2.2 em in greatest dimension. Per request, a 
+portion of tissue is submitted for tissue procurement. A portion 
+tissue is submitted for frozen section. RS-4. 111111111 
+B. Received fresh, subsequently fixed in formalin labeled 
+"node level 5" is a 1.2 x 0.5 x 0.5 em black-red irregular 
+soft tissue fragment which is bisected and entirely submitted in 
+cassette. AS-1. 
+C. Received in formalin labeled "node level 1" is a 1.5 x 
+1.5 x 0.6 ern pink black, irregular tissue fragment which 
+GROSS DESCRIPTION 
+bisected and entirely submitted in one cassette. AS-1. 
+D. Received fresh, subsequently fixed in formalin labeled 
+"left upper lobe 11 is a 20.0 x 6.5 x 3.5 em remainder of 
+lobe. The specimen is partially covered with violaceous smooth 
+glistening pleura and shows multiple staple lines present 
+throughout 
+the specimen. The specimen is sectioned showing a pink-red spongy 
+cut surface with no discrete gross lesions identified. Multiple 
+black-red hilar nodes are grossly identified. Representative 
+sections of the specimen are submitted as follows: 
+
+BLOCK SUMMARY: 1 - possible hilar lymph node; 2 - vascular and 
+bronchial marginsi 3-4 -representative normal. RS-4. 
+E. Received fresh, subsequently fixed in formalin labeled 
+"node level 7" are tvm black-red irregular soft tissue 
+fragments which average 0.8 em in greatest dimension. The 
+specimens 
+are entirely submitted in one cassette. AS-1. 
+F. Received fresh, subsequently fixed in formalin labeled 
+11 node level 7 11 is a 0.5 x 0.4 x 0.4 em gray-pink-black 
+irregular soft tissue fragment which is entirely submitted in one 
+cassette. AS-1. 
+G. Received in formalin labeled "node level 9" is a 1.2 x 
+0.7 x 0.5 ern black-gray irregular soft tissue fragment 
+which is bisected and entirely submitted in one cassette. AS-1. 
+MICROSCOPIC DESCRIPTION 
+Histologic type: Adenocarcinoma. 
+Histologic grade: Moderate to poorly differentiated. 
+Primary tumor (pT): Tumor measures maximally 2.2 em in size and is 
+confined to the lung (pTlb) . 
+Margins of resection: Bronchial and vascular margins are free of 
+tumor. 
+MICROSCOPIC DESCRIPTION 
+Direct extension of tumor: Absent. 
+Venous (large vessel) invasion: Negative. 
+Arterial {large vessel) invasion: Negative. 
+Lymphatic (small vessel) invasion: Negative. 
+Regional lymph nodes (pN) : Hilar lymph nodes and all sampled 
+mediastinal 
+lymph nodes are negative for metastatic carcinoma {pNO). 
+Distant metastasis (pM): Cannot be assessed (pMx). 
+5,3x5,14 
+
+DIAGNOSIS 
+A. and D. Lung, left upper lobectomy: 
+tumor. 
+Moderate to poorly differentiated adenocarcinoma. 
+The tumor is confined to the lung without involvement of the 
+visceral pleural surface. 
+Bronchial and vascular margins of resection are free of 
+Seven bronchial lymph nodes negative for metastatic carcinoma 
+(0/7). 
+B. Lymph node, level 5, resection: 
+Negative for malignancy. 
+C. Lymph node, level 1, resection: 
+Negative for malignancy. 
+E. Lymph node, level 7, resection: 
+Negative for malignancy. 
+F. Lymph node, level 4, resection: 
+Negative for malignancy. 
+G. Lymph node, level 9, resection: 
+DIAGNOSIS 
+--- End Of Report ---

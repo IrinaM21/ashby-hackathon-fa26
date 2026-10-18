@@ -1,0 +1,176 @@
+Results
+GROSS AND MICROSCOPIC SURGICAL PANEL
+
+Specimen Information
+
+Component Results
+
+DIAGNOSIS
+A) LYMPH NODES, 4R PARATRACHEAL, REGIONAL RESECTION:
+1. Two lymph nodes involved by small lymphocytic lymphoma
+2. No evidence of involvement by metastatic carcinoma
+
+B) LYMPH NODE, SUBCARINAL LEVEL 7, BIOPSY:
+1. One lymph node involved by small lymphocytic lymphoma
+2. No evidence of involvement by metastatic carcinoma
+
+C) LYMPH NODES, ADDITIONAL SUBCARINAL LEVEL 7, REGIONAL RESECTION:
+1. Seven lymph nodes involved by small lymphocytic lymphoma
+2. No evidence of involvement by metastatic carcinoma
+
+D) LUNG, RIGHT UPPER LOBE, LOBECTOMY:
+1. Invasive moderately differentiated squamous cell carcinoma characterized by:
+   a. Tumor size: 4.5 x 4.5 x 3 cm
+   b. Surgical margins: Free of involvement
+   c. Pleural invasion: Absent
+   d. Lymph-vascular invasion: Absent
+2. Lung parenchyma focally involved by small lymphocytic lymphoma
+
+E) LYMPH NODE, LEVEL 10, BIOPSY:
+1. One lymph node involved by small lymphocytic lymphoma
+2. No evidence of involvement by metastatic carcinoma
+
+MACROSCOPIC
+SPECIMEN TYPE
+Lobectomy
+
+TUMOR SITE
+Right Lung-Upper Lobe
+
+TUMOR SIZE
+4.5 X 4.5 X 3.0 cm
+
+TUMOR FOCALITY
+Unifocal
+
+MICROSCOPIC
+HISTOLOGIC TYPE
+Squamous cell carcinoma
+
+HISTOLOGICAL GRADE
+G2: (moderately differentiated) of G4
+
+VISCERAL PLEURAL INVASION
+Not identified
+
+LYMPHATIC VASCULAR INVASION
+Absent
+
+TREATMENT EFFECT
+Not applicable
+
+TUMOR EXTENSION
+Not applicable
+
+MARGINS
+Uninvolved by tumor (Bronchial)
+
+PATHOLOGIC STAGING
+EXTENT OF INVASION
+pT2a. (Tumor greater than 3 cm, but 5 cm or less in greatest dimension surrounded by lung or visceral pleura, without bronchoscopic evidence of invasion more proximal than the lobar bronchus (ie, not in the main bronchus); or Tumor 5 cm or less in greatest dimension with any of the following features of extent: involves main bronchus, 2 cm or more distal to the carina; invades the visceral pleura; associated with atelectasis or obstructive pneumonitis that extends to the hilar region but does not involve the entire lung)
+
+REGIONAL LYMPH NODES
+pN0. (No regional lymph node metastasis)
+Total nodes: 11
+Total positive nodes: 0
+N1 nodes: 1
+N1 positive nodes: 0
+N2 nodes: 10
+N2 positive nodes: 0
+N2 sites sampled:
+
+Station 7: Subcarinal nodes
+Station 4: Lower paratracheal nodes
+
+DISTANT METASTASIS
+pM0. (No distant metastasis)
+
+PATHOLOGIC STAGE Summary
+Final TNM: pT2aN0M0
+Stage: IB
+
+**The pathologic stage presumes no distant metastasis.**
+
+***LUNG ANCILLARY TESTING PROTOCOL***
+Case number: Patient name:
+HISTOLOGIC TYPE
+Squamous cell carcinoma
+
+STAGE IV STATUS
+No stage IV disease pathologically
+TISSUE BLOCK AVAILABLE FOR ANCILLARY TESTING
+D7
+
+COMMENT
+This patient's sample does not meet for reflex EGFR and ALK testing. No fresh tissue is available for ancillary testing. The block identified above will be stored in pathology for 10 years for possible future ancillary testing. Please call for any ancillary testing requests.
+
+Lung Cancer Committee EGFR and ALK reflex testing criteria:
+Stage IV disease (histologically proven or clinically suspicious)
+Adenocarcinoma or TTF-1 positive adenosquamous cell carcinoma.
+
+Attending Pathologist:
+
+CLINICAL INFORMATION
+History of lung cancer and history of B-cell chronic lymphocytic leukemia
+
+SPECIMEN/GROSS DESCRIPTION
+A) SOURCE: Lymph node biopsy, 4R paratracheal
+The specimen is received fresh from the OR labeled "4R paratracheal lymph nodes." It consists of two fatty black lymph nodes measuring 0.8 and 1.3 cm in greatest dimension. The larger node is serially sectioned and both nodes are entirely frozen on two blocks.
+
+INTRAOPERATIVE PATHOLOGY CONSULTATION WITH FROZEN SECTION: "No evidence of metastatic carcinoma. Nodal involvement with small lymphocytic lymphoma" is rendered by
+
+B) SOURCE: Lymph node biopsy, subcarinal level 7
+The specimen is received fresh from the OR labeled "subcarinal lymph node level 7." It consists of a 0.8 x 0.5 x 0.5 cm black lymph node which is trisected and entirely frozen on one block.
+
+INTRAOPERATIVE PATHOLOGY CONSULTATION WITH FROZEN SECTION: "No evidence of metastatic carcinoma. Nodal involvement by small lymphocytic lymphoma" is rendered by
+
+C) SOURCE: Lymph node biopsy, additional subcarinal level 7
+Labeled "additional subcarinal lymph node level 7" is a portion of fibrofatty tissue containing eight apparent lymph nodes. The lymph nodes range from 0.5-1.8 cm in greatest dimension. All lymph nodes have gray-black anthracotic pigmentation. The two largest lymph nodes are bisected. All lymphoid tissue is entirely submitted for frozen section diagnosis on two blocks as follows:
+
+1. One large bisected lymph node and four significantly smaller lymph nodes (smaller lymph nodes submitted in toto)
+2. Three lymph nodes, largest lymph node bisected, two smaller lymph nodes in toto.
+
+INTRAOPERATIVE PATHOLOGY CONSULTATION WITH FROZEN SECTION: "Multiple nodes (8) with no evidence of metastatic tumor. Nodal involvement with small lymphocytic lymphoma is present" is rendered by
+D) SOURCE: Lung, right upper lobe
+
+Labeled "right upper lobe of lung" and received fresh from the OR is a 568 gram, 17 x 11 x 5 cm portion of lung. The pleural surface displays a stapled 3 x 1.5 cm bronchial margin with an adjacent 16 cm stapled margin. The pleural surface is red-tan, dusky with a 2 x 1.5 cm slightly puckered area on the opposite aspect of the bronchus. The puckered pleura is inked green and the lung is sectioned revealing a 4.5 x 3 x 4.5 cm white-tan mostly necrotic tumor grossly abutting the puckered pleural surface and grossly approaching the pleura on the opposite aspect, measuring 1.5 cm to the staple line and 3 cm to the bronchus. The remaining parenchyma is dusky, red-brown without additional masses or lesions identified.
+
+Representative sections are submitted in nine cassettes labeled:
+
+1. Bronchial margin, en face
+2. Vascular margins, en face
+3. Anthracotic lymph node
+4-5. Tumor to pleura (green)
+6. Tumor to staple line (blue)
+7. Additional tumor
+8-9. Random lung
+
+E) SOURCE: Level 10 lymph node
+
+Labeled "level 10 lymph node" is a 3.5 cm red-brown lymph node with numerous staples present. The specimen is entirely submitted in three cassettes.
+
+This case is accessioned in
+
+Gross dictation by:
+
+MICROSCOPIC
+
+A-E) The microscopic appearance substantiates the diagnosis.
+
+Dictation by:
+
+Lab and Collection Information
+
+GROSS AND MICROSCOPIC SURGICAL PANEL Report.
+
+Result History
+
+GROSS AND MICROSCOPIC SURGICAL PANEL Report.
+
+Lab Status
+
+Order Complete [3]
+
+Result Information
+
+Provider Status Ordered

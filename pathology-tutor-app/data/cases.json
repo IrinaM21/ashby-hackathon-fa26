@@ -377,6 +377,1045 @@
           "tissue_fraction": 1.0
         }
       }
+    },
+    {
+      "id": "tcga-44-3918",
+      "title": "TCGA-44-3918: Bronchus and lung",
+      "organ": "Bronchus and lung",
+      "time_limit_min": 10,
+      "review_status": "draft",
+      "image": "images/tcga/TCGA-44-3918.png",
+      "image_source": "TCGA TCGA-44-3918-01Z-00-DX1.6da70a8b-6307-423a-9d2d-380c16962855.svs via NCI GDC",
+      "image_license": "TCGA open access (NIH GDC data use policy)",
+      "clinical": {
+        "age_sex": "60-year-old patient",
+        "history": "Primary site: Bronchus and lung. Pathologic stage: Stage IA.",
+        "specimen": "Resection / biopsy, Lung, NOS",
+        "gross": "The gross description indicates a wedge resection of the left upper lobe with multiple black-red irregular soft tissue fragments representing lymph nodes."
+      },
+      "rubric": [
+        {
+          "id": "d1",
+          "section": "diagnosis",
+          "label": "Poorly differentiated adenocarcinoma",
+          "weight": 4,
+          "keywords": [
+            "adenocarcinoma, nos",
+            "adenocarcinoma",
+            "poorly differentiated adenocarcinoma",
+            "adenocarcinoma",
+            "malignant tumor",
+            "neoplastic growth"
+          ],
+          "partial_keywords": [
+            "carcinoma",
+            "malignan"
+          ]
+        },
+        {
+          "id": "f1",
+          "section": "findings",
+          "label": "Microscopic feature",
+          "weight": 2,
+          "keywords": [
+            "poorly differentiated adenocarcinoma"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "a1",
+          "section": "ancillary",
+          "label": "Hematoxylin and Eosin (H&E)",
+          "weight": 1,
+          "keywords": [
+            "h&e stain",
+            "histopathology"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "a2",
+          "section": "ancillary",
+          "label": "Immunohistochemistry (IHC)",
+          "weight": 1,
+          "keywords": [
+            "ihc stain",
+            "cytokeratin 7"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "a3",
+          "section": "ancillary",
+          "label": "Proliferation Index (Ki-67)",
+          "weight": 1,
+          "keywords": [
+            "ki-67 staining",
+            "high proliferation"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "o1",
+          "section": "ancillary",
+          "label": "Margin status",
+          "weight": 1,
+          "keywords": [
+            "free of tumor"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "o2",
+          "section": "ancillary",
+          "label": "Lymph node status",
+          "weight": 1,
+          "keywords": [
+            "negative for metastatic carcinoma"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "o3",
+          "section": "ancillary",
+          "label": "Vascular and bronchial margins",
+          "weight": 1,
+          "keywords": [
+            "free of tumor"
+          ],
+          "partial_keywords": []
+        }
+      ],
+      "expert_answer": {
+        "diagnosis": "Poorly differentiated adenocarcinoma",
+        "summary": "The final diagnosis is poorly differentiated adenocarcinoma, a malignant tumor originating from the lung and regional lymph nodes."
+      },
+      "ancillary_results": {
+        "Hematoxylin and Eosin (H&E)": "Positive for adenocarcinoma",
+        "Immunohistochemistry (IHC)": "Positive for cytokeratin 7",
+        "Proliferation Index (Ki-67)": "High proliferation index"
+      },
+      "references": [
+        "TCGA case TCGA-44-3918, NCI Genomic Data Commons: https://portal.gdc.cancer.gov/cases/6e3b6b72-142d-4b8d-a462-28a205796e41"
+      ],
+      "source": {
+        "tcga_case": "TCGA-44-3918",
+        "gdc_case_id": "6e3b6b72-142d-4b8d-a462-28a205796e41",
+        "project": "TCGA-LUAD",
+        "report_file_id": "acf6798b-dee3-437c-bb89-ca70f1d7afab",
+        "slide_file_id": "b8f5988a-e90f-4f34-ae36-65b008cd7cdb",
+        "report_text": "reports/TCGA-44-3918.txt",
+        "report_text_source": "pdf text layer",
+        "patch": {
+          "level": 0,
+          "x": 122657,
+          "y": 2647,
+          "tissue_fraction": 1.0
+        }
+      }
+    },
+    {
+      "id": "tcga-44-6146",
+      "title": "TCGA-44-6146: Bronchus and lung",
+      "organ": "Bronchus and lung",
+      "time_limit_min": 10,
+      "review_status": "draft",
+      "image": "images/tcga/TCGA-44-6146.png",
+      "image_source": "TCGA TCGA-44-6146-01Z-00-DX1.8db8c567-690e-4df3-98a9-f241b6a8d811.svs via NCI GDC",
+      "image_license": "TCGA open access (NIH GDC data use policy)",
+      "clinical": {
+        "age_sex": "64-year-old patient",
+        "history": "Primary site: Bronchus and lung.",
+        "specimen": "Not recorded",
+        "gross": "The left lower lobe specimen is a single piece of lung tissue measuring 25 x 18 x 10 cm in greatest dimensions, with a firm tan gelatinous/mucinous tissue that measures 21 x 14 x 10 cm in greatest dimensions. The pleural surface is focally puckered."
+      },
+      "rubric": [
+        {
+          "id": "d1",
+          "section": "diagnosis",
+          "label": "Mucinous adenocarcinoma, well-differentiated, 21 cm in greatest dimension",
+          "weight": 4,
+          "keywords": [
+            "mucinous adenocarcinoma",
+            "mucinous",
+            "adenocarcinoma",
+            "mucinous adenocarcinoma",
+            "well-differentiated",
+            "21 cm",
+            "lung lesion"
+          ],
+          "partial_keywords": [
+            "carcinoma",
+            "malignan"
+          ]
+        },
+        {
+          "id": "f1",
+          "section": "findings",
+          "label": "Microscopic feature",
+          "weight": 2,
+          "keywords": [
+            "mucinous adenocarcinoma",
+            "well-differentiated"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "a1",
+          "section": "ancillary",
+          "label": "Hematoxylin and Eosin (H&E)",
+          "weight": 1,
+          "keywords": [
+            "h&e",
+            "mucinous adenocarcinoma",
+            "well-differentiated"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "a2",
+          "section": "ancillary",
+          "label": "PAS Stain",
+          "weight": 1,
+          "keywords": [
+            "pas",
+            "mucin"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "a3",
+          "section": "ancillary",
+          "label": "Alcian Blue Stain",
+          "weight": 1,
+          "keywords": [
+            "alcian blue",
+            "mucin"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "o1",
+          "section": "ancillary",
+          "label": "Margin status",
+          "weight": 1,
+          "keywords": [
+            "uninvolved"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "o2",
+          "section": "ancillary",
+          "label": "Lymph node status",
+          "weight": 1,
+          "keywords": [
+            "no evidence of metastasis"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "o3",
+          "section": "ancillary",
+          "label": "Distant metastasis",
+          "weight": 1,
+          "keywords": [
+            "cannot be evaluated"
+          ],
+          "partial_keywords": []
+        }
+      ],
+      "expert_answer": {
+        "diagnosis": "Mucinous adenocarcinoma, well-differentiated, 21 cm in greatest dimension",
+        "summary": "The final diagnosis is mucinous adenocarcinoma, well-differentiated, with a primary tumor measuring 21 cm in greatest dimension. The margins of resection are uninvolved, and there is no evidence of metastasis in the lymph nodes."
+      },
+      "ancillary_results": {
+        "Hematoxylin and Eosin (H&E)": "Well-differentiated mucinous adenocarcinoma",
+        "PAS Stain": "Positive for mucin",
+        "Alcian Blue Stain": "Positive for mucin"
+      },
+      "references": [
+        "TCGA case TCGA-44-6146, NCI Genomic Data Commons: https://portal.gdc.cancer.gov/cases/0c0b610e-fe4c-406d-a5ed-5cc3b11dabf5"
+      ],
+      "source": {
+        "tcga_case": "TCGA-44-6146",
+        "gdc_case_id": "0c0b610e-fe4c-406d-a5ed-5cc3b11dabf5",
+        "project": "TCGA-LUAD",
+        "report_file_id": "7754e8be-fea0-4987-b4c0-ac8f8b7ea339",
+        "slide_file_id": "6b6545f2-b556-4a2b-9dde-1579ffae09ab",
+        "report_text": "reports/TCGA-44-6146.txt",
+        "report_text_source": "pdf text layer",
+        "patch": {
+          "level": 0,
+          "x": 88175,
+          "y": 4159,
+          "tissue_fraction": 1.0
+        }
+      }
+    },
+    {
+      "id": "tcga-56-8305",
+      "title": "TCGA-56-8305: Bronchus and lung",
+      "organ": "Bronchus and lung",
+      "time_limit_min": 10,
+      "review_status": "draft",
+      "image": "images/tcga/TCGA-56-8305.png",
+      "image_source": "TCGA TCGA-56-8305-01Z-00-DX1.2C1D792D-79E0-48D7-9938-DFD44428874E.svs via NCI GDC",
+      "image_license": "TCGA open access (NIH GDC data use policy)",
+      "clinical": {
+        "age_sex": "72-year-old patient",
+        "history": "Primary site: Bronchus and lung. Pathologic stage: Stage IB.",
+        "specimen": "Resection / biopsy, Lung, NOS",
+        "gross": "The lung specimen is a 568 gram, 17 x 11 x 5 cm portion of lung with a 4.5 x 3 x 4.5 cm white-tan mostly necrotic tumor grossly abutting the puckered pleural surface."
+      },
+      "rubric": [
+        {
+          "id": "d1",
+          "section": "diagnosis",
+          "label": "Small lymphocytic lymphoma",
+          "weight": 4,
+          "keywords": [
+            "squamous cell carcinoma, nos",
+            "squamous",
+            "cell",
+            "small lymphocytic lymphoma",
+            "lymph node involvement",
+            "lymph node biopsy",
+            "lymph node resection"
+          ],
+          "partial_keywords": [
+            "carcinoma",
+            "malignan"
+          ]
+        },
+        {
+          "id": "f1",
+          "section": "findings",
+          "label": "Microscopic feature",
+          "weight": 2,
+          "keywords": [
+            "small lymphocytic lymphoma"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "a1",
+          "section": "ancillary",
+          "label": "H&E staining",
+          "weight": 1,
+          "keywords": [
+            "h&e staining",
+            "staining results"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "a2",
+          "section": "ancillary",
+          "label": "Lymph node biopsy",
+          "weight": 1,
+          "keywords": [
+            "lymph node biopsy",
+            "biopsy results"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "o1",
+          "section": "ancillary",
+          "label": "Margin status",
+          "weight": 1,
+          "keywords": [
+            "uninvolved by tumor"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "o2",
+          "section": "ancillary",
+          "label": "Lymph node status",
+          "weight": 1,
+          "keywords": [
+            "no regional lymph node metastasis"
+          ],
+          "partial_keywords": []
+        }
+      ],
+      "expert_answer": {
+        "diagnosis": "Small lymphocytic lymphoma",
+        "summary": "The final diagnosis includes two cases of small lymphocytic lymphoma involving lymph nodes and one case of invasive moderately differentiated squamous cell carcinoma in the right upper lobe of the lung."
+      },
+      "ancillary_results": {
+        "H&E staining": "No evidence of metastatic carcinoma. Nodal involvement with small lymphocytic lymphoma is present",
+        "Lymph node biopsy": "No evidence of metastatic carcinoma. Nodal involvement with small lymphocytic lymphoma is present"
+      },
+      "references": [
+        "TCGA case TCGA-56-8305, NCI Genomic Data Commons: https://portal.gdc.cancer.gov/cases/d5e94dcf-994f-48a0-b491-bbbf1c2a6783"
+      ],
+      "source": {
+        "tcga_case": "TCGA-56-8305",
+        "gdc_case_id": "d5e94dcf-994f-48a0-b491-bbbf1c2a6783",
+        "project": "TCGA-LUSC",
+        "report_file_id": "03926b1f-bc15-4847-92d9-8a85dc00555e",
+        "slide_file_id": "abf132ea-a055-4068-92f3-0e1bcfd5e8c5",
+        "report_text": "reports/TCGA-56-8305.txt",
+        "report_text_source": "transcribed by Qwen/Qwen2.5-VL-3B-Instruct",
+        "patch": {
+          "level": 1,
+          "x": 8092,
+          "y": 32370,
+          "tissue_fraction": 1.0
+        }
+      }
+    },
+    {
+      "id": "tcga-18-3409",
+      "title": "TCGA-18-3409: Bronchus and lung",
+      "organ": "Bronchus and lung",
+      "time_limit_min": 10,
+      "review_status": "draft",
+      "image": "images/tcga/TCGA-18-3409.png",
+      "image_source": "TCGA TCGA-18-3409-01Z-00-DX1.3E32CC78-B066-4F85-A781-EDAF39DE0704.svs via NCI GDC",
+      "image_license": "TCGA open access (NIH GDC data use policy)",
+      "clinical": {
+        "age_sex": "74-year-old patient",
+        "history": "Primary site: Bronchus and lung.",
+        "specimen": "Not recorded",
+        "gross": "The gross examination revealed a well-circumscribed blackish-tan tumor measuring 1.1 x 1.0 x 0.9 cm in the right upper lobe lobectomy specimen."
+      },
+      "rubric": [
+        {
+          "id": "d1",
+          "section": "diagnosis",
+          "label": "Basaloid squamous cell carcinoma",
+          "weight": 4,
+          "keywords": [
+            "not reported",
+            "reported",
+            "basaloid squamous cell carcinoma",
+            "squamous cell carcinoma",
+            "malignant tumor",
+            "primary tumor"
+          ],
+          "partial_keywords": [
+            "carcinoma",
+            "malignan"
+          ]
+        },
+        {
+          "id": "f1",
+          "section": "findings",
+          "label": "Microscopic feature",
+          "weight": 2,
+          "keywords": [
+            "basaloid squamous cell carcinoma"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "a1",
+          "section": "ancillary",
+          "label": "Frozen section",
+          "weight": 1,
+          "keywords": [
+            "frozen section"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "a2",
+          "section": "ancillary",
+          "label": "Gross examination",
+          "weight": 1,
+          "keywords": [
+            "gross examination"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "o1",
+          "section": "ancillary",
+          "label": "Margin status",
+          "weight": 1,
+          "keywords": [
+            "resection margin"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "o2",
+          "section": "ancillary",
+          "label": "Lymph node status",
+          "weight": 1,
+          "keywords": [
+            "lymph node"
+          ],
+          "partial_keywords": []
+        }
+      ],
+      "expert_answer": {
+        "diagnosis": "Basaloid squamous cell carcinoma",
+        "summary": "The final diagnosis is basaloid squamous cell carcinoma, which was confirmed through multiple frozen sections and gross examination."
+      },
+      "ancillary_results": {
+        "Frozen section": "Positive for basaloid squamous cell carcinoma",
+        "Gross examination": "Well-circumscribed tumor in the right upper lobe lobectomy specimen"
+      },
+      "references": [
+        "TCGA case TCGA-18-3409, NCI Genomic Data Commons: https://portal.gdc.cancer.gov/cases/b09e872a-e837-49ec-8a27-84dcdcabf347"
+      ],
+      "source": {
+        "tcga_case": "TCGA-18-3409",
+        "gdc_case_id": "b09e872a-e837-49ec-8a27-84dcdcabf347",
+        "project": "TCGA-LUSC",
+        "report_file_id": "624b8b6d-ef92-4453-8f99-bf85273ff483",
+        "slide_file_id": "75bba1b4-3fe5-4657-a5a9-0edc643b44fd",
+        "report_text": "reports/TCGA-18-3409.txt",
+        "report_text_source": "pdf text layer",
+        "patch": {
+          "level": 0,
+          "x": 67727,
+          "y": 5889,
+          "tissue_fraction": 1.0
+        }
+      }
+    },
+    {
+      "id": "tcga-ad-6895",
+      "title": "TCGA-AD-6895: Colon",
+      "organ": "Colon",
+      "time_limit_min": 10,
+      "review_status": "draft",
+      "image": "images/tcga/TCGA-AD-6895.png",
+      "image_source": "TCGA TCGA-AD-6895-01Z-00-DX1.7FB1FBC6-683B-4285-89D1-A7A20F07A9D4.svs via NCI GDC",
+      "image_license": "TCGA open access (NIH GDC data use policy)",
+      "clinical": {
+        "age_sex": "84-year-old patient",
+        "history": "Primary site: Colon.",
+        "specimen": "Not recorded",
+        "gross": "A centrally ulcerated, finely granular, tan-brown plaque-like lesion was found in the cecal pouch, with surrounding adipose tissue showing nodules."
+      },
+      "rubric": [
+        {
+          "id": "d1",
+          "section": "diagnosis",
+          "label": "Adenocarcinoma, cecal pouch, poorly differentiated, grade III, T3N1a, pT3N1a",
+          "weight": 4,
+          "keywords": [
+            "basaloid squamous cell carcinoma",
+            "basaloid",
+            "squamous",
+            "cell",
+            "adenocarcinoma",
+            "poorly differentiated",
+            "grade iii",
+            "t3n1a",
+            "pt3n1a"
+          ],
+          "partial_keywords": [
+            "carcinoma",
+            "malignan"
+          ]
+        },
+        {
+          "id": "f1",
+          "section": "findings",
+          "label": "Microscopic feature",
+          "weight": 2,
+          "keywords": [
+            "centrally ulcerated",
+            "granular",
+            "fibrotic"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "a1",
+          "section": "ancillary",
+          "label": "PAS stain",
+          "weight": 1,
+          "keywords": [
+            "pas stain",
+            "fibrous obliteration",
+            "pas 9"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "a2",
+          "section": "ancillary",
+          "label": "SPC-A stain",
+          "weight": 1,
+          "keywords": [
+            "spc-a stain",
+            "fibrous obliteration",
+            "pas 4"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "o1",
+          "section": "ancillary",
+          "label": "Margin status",
+          "weight": 1,
+          "keywords": [
+            "proximal margin",
+            "distal margin",
+            "radial margin"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "o2",
+          "section": "ancillary",
+          "label": "Lymph node status",
+          "weight": 1,
+          "keywords": [
+            "total number of lymph nodes examined",
+            "total number of lymph nodes with metastatic carcinoma"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "o3",
+          "section": "ancillary",
+          "label": "Distance of tumor from closest margin",
+          "weight": 1,
+          "keywords": [
+            "carcinoma extends to within 1 mm of the serosal surface"
+          ],
+          "partial_keywords": []
+        }
+      ],
+      "expert_answer": {
+        "diagnosis": "Adenocarcinoma, cecal pouch, poorly differentiated, grade III, T3N1a, pT3N1a",
+        "summary": "A poorly differentiated adenocarcinoma was found in the cecal pouch, extending through the muscularis propria into subserosal adipose tissue without lymph node involvement."
+      },
+      "ancillary_results": {
+        "PAS stain": "Fibrous obliteration of the lumen, PAS 9",
+        "SPC-A stain": "Fibrous obliteration of the lumen, PAS 4"
+      },
+      "references": [
+        "TCGA case TCGA-AD-6895, NCI Genomic Data Commons: https://portal.gdc.cancer.gov/cases/4f601d7b-8db1-4c6d-9374-21dcd804980d"
+      ],
+      "source": {
+        "tcga_case": "TCGA-AD-6895",
+        "gdc_case_id": "4f601d7b-8db1-4c6d-9374-21dcd804980d",
+        "project": "TCGA-COAD",
+        "report_file_id": "a73cf203-c35c-42bf-9a5b-c6defafb0045",
+        "slide_file_id": "f77be3ea-4595-49a6-b41c-de074b132bf8",
+        "report_text": "reports/TCGA-AD-6895.txt",
+        "report_text_source": "pdf text layer",
+        "patch": {
+          "level": 0,
+          "x": 2973,
+          "y": 6441,
+          "tissue_fraction": 1.0
+        }
+      }
+    },
+    {
+      "id": "tcga-ad-6888",
+      "title": "TCGA-AD-6888: Colon",
+      "organ": "Colon",
+      "time_limit_min": 10,
+      "review_status": "draft",
+      "image": "images/tcga/TCGA-AD-6888.png",
+      "image_source": "TCGA TCGA-AD-6888-01Z-00-DX1.47AE342C-4577-4D8B-9048-0B106C5960E7.svs via NCI GDC",
+      "image_license": "TCGA open access (NIH GDC data use policy)",
+      "clinical": {
+        "age_sex": "73-year-old patient",
+        "history": "Primary site: Colon.",
+        "specimen": "Not recorded",
+        "gross": "The specimen includes two masses in the cecum and ascending colon, with a 1.2 cm pink polyp and a 0.4 cm tan polyp present."
+      },
+      "rubric": [
+        {
+          "id": "d1",
+          "section": "diagnosis",
+          "label": "Colonic adenocarcinoma, 6.4 cm, high-grade, with extension through the muscularis propria (pT3) involving the cecum; Colonic adenocarcinoma, 7.8 cm, low-grade, with extension through the muscularis propria (pT3) involving the ascending colon at the hepatic flexure; Lymphovascular invasion identified.",
+          "weight": 4,
+          "keywords": [
+            "not reported",
+            "reported",
+            "colonic adenocarcinoma",
+            "high-grade adenocarcinoma",
+            "low-grade adenocarcinoma",
+            "muscularis propria invasion",
+            "lymphovascular invasion"
+          ],
+          "partial_keywords": [
+            "carcinoma",
+            "malignan"
+          ]
+        },
+        {
+          "id": "f1",
+          "section": "findings",
+          "label": "Microscopic feature",
+          "weight": 2,
+          "keywords": [
+            "muscularis propria invasion",
+            "lymphovascular invasion"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "a1",
+          "section": "ancillary",
+          "label": "Hematoxylin and Eosin (H&E)",
+          "weight": 1,
+          "keywords": [
+            "h&e staining",
+            "adenocarcinoma"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "a2",
+          "section": "ancillary",
+          "label": "Immunohistochemistry (IHC)",
+          "weight": 1,
+          "keywords": [
+            "ck7",
+            "ck20",
+            "p53"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "a3",
+          "section": "ancillary",
+          "label": "Ki-67",
+          "weight": 1,
+          "keywords": [
+            "ki-67"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "o1",
+          "section": "ancillary",
+          "label": "Margin status",
+          "weight": 1,
+          "keywords": [
+            "uninvolved"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "o2",
+          "section": "ancillary",
+          "label": "Lymph node status",
+          "weight": 1,
+          "keywords": [
+            "free of carcinoma"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "o3",
+          "section": "ancillary",
+          "label": "Tumor deposits",
+          "weight": 1,
+          "keywords": [
+            "not identified"
+          ],
+          "partial_keywords": []
+        }
+      ],
+      "expert_answer": {
+        "diagnosis": "Colonic adenocarcinoma, 6.4 cm, high-grade, with extension through the muscularis propria (pT3) involving the cecum; Colonic adenocarcinoma, 7.8 cm, low-grade, with extension through the muscularis propria (pT3) involving the ascending colon at the hepatic flexure; Lymphovascular invasion identified.",
+        "summary": "The specimen consists of two colonic adenocarcinomas, one in the cecum and another in the ascending colon at the hepatic flexure, both invading through the muscularis propria. There is also lymphovascular invasion identified."
+      },
+      "ancillary_results": {
+        "Hematoxylin and Eosin (H&E)": "Positive for adenocarcinoma",
+        "Immunohistochemistry (IHC)": "Positive for CK7, CK20, and p53",
+        "Ki-67": "Moderate proliferation index"
+      },
+      "references": [
+        "TCGA case TCGA-AD-6888, NCI Genomic Data Commons: https://portal.gdc.cancer.gov/cases/13eff2e5-e33a-485f-9ba4-8a7ccb3c7528"
+      ],
+      "source": {
+        "tcga_case": "TCGA-AD-6888",
+        "gdc_case_id": "13eff2e5-e33a-485f-9ba4-8a7ccb3c7528",
+        "project": "TCGA-COAD",
+        "report_file_id": "af964f36-7f1e-4522-bcc0-8e1504e9c9c3",
+        "slide_file_id": "5ba7738a-dd63-4c39-b48d-7b9c28be1d7d",
+        "report_text": "reports/TCGA-AD-6888.txt",
+        "report_text_source": "pdf text layer",
+        "patch": {
+          "level": 0,
+          "x": 15641,
+          "y": 4739,
+          "tissue_fraction": 1.0
+        }
+      }
+    },
+    {
+      "id": "tcga-xk-aak1",
+      "title": "TCGA-XK-AAK1: Prostate gland",
+      "organ": "Prostate gland",
+      "time_limit_min": 10,
+      "review_status": "draft",
+      "image": "images/tcga/TCGA-XK-AAK1.png",
+      "image_source": "TCGA TCGA-XK-AAK1-01Z-00-DX1.5354527B-905C-4F39-B469-3A64D0BC56A2.svs via NCI GDC",
+      "image_license": "TCGA open access (NIH GDC data use policy)",
+      "clinical": {
+        "age_sex": "62-year-old patient",
+        "history": "Primary site: Prostate gland.",
+        "specimen": "Not recorded",
+        "gross": "There is a 6.0 x 5.0 x 1.5 cm collection of rubbery and fatty tissue which appears to represent the bilateral pelvic lymph nodes."
+      },
+      "rubric": [
+        {
+          "id": "d1",
+          "section": "diagnosis",
+          "label": "Prostatic adenocarcinoma, acinar type, Gleason score 4+3=7, bilateral",
+          "weight": 4,
+          "keywords": [
+            "squamous cell carcinoma, nos",
+            "squamous",
+            "cell",
+            "prostatic adenocarcinoma",
+            "acinar type",
+            "gleason score 7",
+            "bilateral"
+          ],
+          "partial_keywords": [
+            "carcinoma",
+            "malignan"
+          ]
+        },
+        {
+          "id": "f1",
+          "section": "findings",
+          "label": "Microscopic feature",
+          "weight": 2,
+          "keywords": [
+            "dna diploid",
+            "ki-67 236%",
+            "gleason score 7"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "a1",
+          "section": "ancillary",
+          "label": "DNA ploidy",
+          "weight": 1,
+          "keywords": [
+            "dna ploidy test",
+            "diploid"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "a2",
+          "section": "ancillary",
+          "label": "Ki-67",
+          "weight": 1,
+          "keywords": [
+            "ki-67",
+            "mib-1"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "o1",
+          "section": "ancillary",
+          "label": "Margins",
+          "weight": 1,
+          "keywords": [
+            "negative for malignancy"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "o2",
+          "section": "ancillary",
+          "label": "Lymph nodes",
+          "weight": 1,
+          "keywords": [
+            "negative for malignancy"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "o3",
+          "section": "ancillary",
+          "label": "Treatment effect",
+          "weight": 1,
+          "keywords": [
+            "not applicable"
+          ],
+          "partial_keywords": []
+        }
+      ],
+      "expert_answer": {
+        "diagnosis": "Prostatic adenocarcinoma, acinar type, Gleason score 4+3=7, bilateral",
+        "summary": "The histological examination reveals a primary pattern of 4, secondary pattern of 3, and tertiary pattern of 0, resulting in a total Gleason score of 7. The tumor is predominantly located in the apex and midportion of the left lobe, measuring up to 14 mm in greatest dimension."
+      },
+      "ancillary_results": {
+        "DNA ploidy": "DNA diploid",
+        "Ki-67": "236%"
+      },
+      "references": [
+        "TCGA case TCGA-XK-AAK1, NCI Genomic Data Commons: https://portal.gdc.cancer.gov/cases/1bc21d56-299d-40bc-b9c8-c74db990611e"
+      ],
+      "source": {
+        "tcga_case": "TCGA-XK-AAK1",
+        "gdc_case_id": "1bc21d56-299d-40bc-b9c8-c74db990611e",
+        "project": "TCGA-PRAD",
+        "report_file_id": "9c4bec7c-5d67-4ada-b2a6-6df8401faa81",
+        "slide_file_id": "38c23cec-878b-481e-8b0b-d979d72affc9",
+        "report_text": "reports/TCGA-XK-AAK1.txt",
+        "report_text_source": "pdf text layer",
+        "patch": {
+          "level": 0,
+          "x": 5462,
+          "y": 2100,
+          "tissue_fraction": 1.0
+        }
+      }
+    },
+    {
+      "id": "tcga-ej-a46e",
+      "title": "TCGA-EJ-A46E: Prostate gland",
+      "organ": "Prostate gland",
+      "time_limit_min": 10,
+      "review_status": "draft",
+      "image": "images/tcga/TCGA-EJ-A46E.png",
+      "image_source": "TCGA TCGA-EJ-A46E-01Z-00-DX1.DBF5A5EC-DCD9-44E9-8303-9F61BEAE44D0.svs via NCI GDC",
+      "image_license": "TCGA open access (NIH GDC data use policy)",
+      "clinical": {
+        "age_sex": "57-year-old patient",
+        "history": "Primary site: Prostate gland.",
+        "specimen": "Resection / biopsy, Prostate gland",
+        "gross": "See report"
+      },
+      "rubric": [
+        {
+          "id": "d1",
+          "section": "diagnosis",
+          "label": "Prostatic Adenocarcinoma, Acinar Type with focal intraductal component, Gleason score 4+4 = 8; involving the right mid through right base prostate.",
+          "weight": 4,
+          "keywords": [
+            "adenocarcinoma, nos",
+            "adenocarcinoma",
+            "prostatic adenocarcinoma",
+            "acinar type",
+            "focal intraductal component",
+            "gleason score 4+4 = 8",
+            "right mid through right base prostate"
+          ],
+          "partial_keywords": [
+            "carcinoma",
+            "malignan"
+          ]
+        },
+        {
+          "id": "f1",
+          "section": "findings",
+          "label": "Microscopic feature",
+          "weight": 2,
+          "keywords": [
+            "prostatic adenocarcinoma",
+            "acinar type",
+            "focal intraductal component",
+            "gleason score 4+4 = 8"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "a1",
+          "section": "ancillary",
+          "label": "Gleason Score",
+          "weight": 1,
+          "keywords": [
+            "gleason score 4+4 = 8"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "a2",
+          "section": "ancillary",
+          "label": "Gleason Sum Score",
+          "weight": 1,
+          "keywords": [
+            "gleason sum score 8"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "a3",
+          "section": "ancillary",
+          "label": "High-Grade PIN",
+          "weight": 1,
+          "keywords": [
+            "high-grade pin",
+            "nos"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "o1",
+          "section": "ancillary",
+          "label": "Residual Tumor",
+          "weight": 1,
+          "keywords": [
+            "rd"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "o2",
+          "section": "ancillary",
+          "label": "Lymph Nodes Examined",
+          "weight": 1,
+          "keywords": [
+            "9"
+          ],
+          "partial_keywords": []
+        },
+        {
+          "id": "o3",
+          "section": "ancillary",
+          "label": "Lymph Nodes Positive",
+          "weight": 1,
+          "keywords": [
+            "[positive]"
+          ],
+          "partial_keywords": []
+        }
+      ],
+      "expert_answer": {
+        "diagnosis": "Prostatic Adenocarcinoma, Acinar Type with focal intraductal component, Gleason score 4+4 = 8; involving the right mid through right base prostate.",
+        "summary": "The final diagnosis includes prostatic adenocarcinoma with a focal intraductal component, Gleason score 4+4 = 8, involving the right mid through right base prostate. There is no evidence of malignancy in the pelvic lymph nodes."
+      },
+      "ancillary_results": {
+        "Gleason Score": "4+4 = 8",
+        "Gleason Sum Score": "8",
+        "High-Grade PIN": "Yes - NOS"
+      },
+      "references": [
+        "TCGA case TCGA-EJ-A46E, NCI Genomic Data Commons: https://portal.gdc.cancer.gov/cases/a608bf0e-a932-4541-8439-2ffb9f6294b0"
+      ],
+      "source": {
+        "tcga_case": "TCGA-EJ-A46E",
+        "gdc_case_id": "a608bf0e-a932-4541-8439-2ffb9f6294b0",
+        "project": "TCGA-PRAD",
+        "report_file_id": "3730f1a5-c90c-42d2-a7fd-390b65c2c152",
+        "slide_file_id": "07751c93-6c7c-424f-979d-64594233e117",
+        "report_text": "reports/TCGA-EJ-A46E.txt",
+        "report_text_source": "pdf text layer",
+        "patch": {
+          "level": 1,
+          "x": 36564,
+          "y": 8125,
+          "tissue_fraction": 1.0
+        }
+      }
     }
   ],
   "_note": "Cases with review_status 'draft' have model-drafted rubrics: check each rubric against data/reports/<case>.txt and set review_status to 'reviewed'."

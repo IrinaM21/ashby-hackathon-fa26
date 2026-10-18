@@ -1,0 +1,72 @@
+SURGICAL PATHOLOGY: 
+COPY TO: 
+Pre-Op Diagnosis 
+Colon cancer 
+Post-Op Diagnosis 
+Same as above 
+Clinical History 
+Nothing indicated 
+Gross Description: 
+'''::('<=''/<=D DATE: REPORT 
+Container labeled "!!I!~~~~~~'- right colon" is an 
+approximately 14 cm previously opened moderately distorted portion 
+of large bowel including cecum, as well as 4.5 cm of previously 
+opened terminal ileum. The specimen is covered by a moderate amount 
+of pericolic and epiploic adipose tissue in which a 4.3 x 0.6 x 0.6 
+grossly unremarkable vermiform appendix is identified. The visible 
+serosa is shaggy and gray-brown with several fibrofatty adhesions. 
+The wall is up to 0.6 cm edematous and fibrotic. The lumen is lined 
+by gray-tan mucosa with preservation of intestinal folds and a small 
+amount of submucosal edema. Noted within the cecal pouch at a point 
+0.3 cm from the ileocecal valve there is a previously sectioned 
+moderately distorted fairly well defined approximately 3.0 x 2.8 cm 
+centrally ulcerated finely granular tan brown plaque like lesion 
+. with slightly raised rolled borders. This appears to have a gritty 
+gray-tan fibrotic cut surface measuring up to 0.7 cm in thickness. 
+This grossly appears to focally extend through the wall focally 
+shallowly into the surrounding adipose tissue adjacent to the 
+ileocecal valve. In addition, this lesion focally appears to extend 
+into the appendiceal orifice but does not grossly appear to obstruct 
+the appendix. On sectioning, the surrounding adipose tissue shows 
+several poorly defined gray tan to brown nodules up to 0.6 cm. Also 
+received in the same container are three tissue cassettes each 
+labeled Representative sections are submitted 
+labeled as follows: A - proximal margin; B - distal margin with a 
+portion of proximal margin included; C-F - representative lesion and 
+surrounding tissue; G - random uninvolved bowel; H - representative 
+more distal aspect of appendix; I - appendix near appendiceal 
+orifice; J-L - nodules from pericolic fat. 
+Microscopic Description: 
+The slides labeled •••••• are examined. See diagnosis. 
+Final Diagnosis 
+Tumor characteristics: 
+Histologic type: Adenocarcinoma. 
+Location of tumor: Cecal pouch. 
+Size: 3.0 x 2.8 x 0.7 cm in greatest dimension. 
+Grade: Poorly differentiated. 
+Lymphovascular space invasion: Yes. 
+Perforation of Visceral peritoneum: No. 
+Presence of mesenteric deposits: No. 
+Depth of invasion: Carcinoma extends through muscularis propria 
+into subserosal adipose tissue. 
+Surgical Margin Status: 
+Proximal Margin: No carcinoma identified. 
+Distal Margin: No carcinoma identified. 
+Radial Margin: No carcinoma identified. 
+Distance of tumor from closet margin: Carcinoma extends to 
+within 1 mm of the serosal surface but does not perforate or 
+extend to the serosal surface. 
+Lymph Node Status: 
+Total number of lymph nodes examined: 17 
+Total number of lymph nodes with metastatic carcinoma: 1 (1/17) 
+PAS 9 
+Appendix: 
+Fibrous obliteration of the lumen. PAS 4 SPC-A 
+CPT: 88309 
+Stage: pT3N1a 
+Comments 
+At the request of the undersigned pathologist. these slides have 
+been additionally reviewed by Dr. _ who concurs with the 
+diagnosis. 
+This test has been finalized at the •••• ICampus. 
+<SiQn Out Dr. Signature>

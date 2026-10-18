@@ -1,0 +1,176 @@
+Surgical Pathology Report
+"ADDENDUM PRESENT"
+Patient Name:
+Clinic Number:
+Date of Birth: (Ale: Gender:M
+Requested By:
+UUID:55565AD3-723E-4899-BBEA-D6FDF557E4C6
+TCGA-XK-AAK1-GIA-PR Redacted
+III 11111111111111111111111111111IIIIIIIIIIIIIIIIIII1111111111111III1111 11111111111 I II I IIIIIIIIIIIIIIII II IIIIIIIIIIIIII II III
+III IIIIII111111III1IIIIIIIIIIIIIIIIIIIIIIIIIIIII1111111111111III
+Accession #:
+Procedure Date:
+Received Date:'
+Account #:
+Report Signed:
+Epinal Diagnosis:
+Prostate with bilateral lymph nodes, radical prosiatectomy: Prostatic adenocarcinortta(Gleason score 4+3=7),
+bilateral.
+Procedure : Radical prostatectomy with bilateral lymph node dissection.
+Histologic type : Prostatic adenocarcinoma, acinar type.
+Histologic grade:
+Primary pattern: 4, Secondary pattern: 3, Tertiary pattern: Not applicable.
+Total Gleason Score: 7
+Tumor quantitation and location : Bilateral. The predominant tumor is identified in the apex and rnidportion of the
+left lobe , measuring up to 14 mm in greatest dimension (microscopic measurement). Scattered smaller foci of prostatic
+adenocarcinoma (measuring up to 7 mm) are identified in the left base, right apex, right mid, and right base.
+Extraprostatic extension : Not identified • [ -
+Margins : Negative for malignancy.
+Lymph -vascular Invasion : Not identified. L,ryL
+Perineural invasion : Not identified.
+Seminal vesicle invasion : Not identified.
+Treatment effect on carcinoma : Not applicable.
+Lymph nodes : Six lymph nodes, negative for malignancy (016).
+Additional pathologic findings: None.
+Prostate weight; 35 g.
+tate size: 40 x 40 x 30 mmP .ros
+Ancillary studies : DNA ploidy will be performed and resultsREPORTED IN AN ADDENDUM.
+Pathologic staging (AJCC 2010): T2c.
+Biorepository sample : Contains carcinoma.
+Block (s) containing malignancy suitable for additional testing : A3, Al, AS, A9, A13.
+fnlery eyed by
+Report electrunrcally slgnrd ON/ by
+Transcribed by
+ADDENDA:
+Paraffin embedded tissue (Block A7) was forwarded to
+Page] o13
+for DNA Ploidy by DIA testing. This report ± interpreted by
+follows:
+Source: Prostate, radical prostatectomy, block.
+The cancer cells are DNA diploid.
+DIA pioidy test results have beenv6"ted by our laboratory for lbsmalin-fixed. paraffin embedded tissue sections. Analysis was perrrtrrnedtrslng the
+instrumentI which determined DNA ploidy statusby compering the DNA content of tumor cells end control edit (selected by
+' operator).
+Laboratory Developed 'l'est
+Proliferation index Ki-67 (MIB-1) = 236%.
+Method: lmmunohistochemical staining of Uri Ki.67 antigen in formelin-fixed paraffin-embedded tissue sections has been validated by our laboratory, using the
+MIR-I cloir -^" 'roerrietery detection system. All controls show app rop daterceelivity. Image cottecioit and analysis is porformed using the
+instrument. . Tho rendea the percentage of positive staining tumor nuclei (tumor selected by operator).
+Laboratory Developed Test
+Transt:ribul by
+Signed by
+Clinical Information:
+Prostate CA.
+Specimen(s):
+A: Prostate with bi lateral lymph nodes
+Grass Description:
+Performed by
+A 1 A2A3A4A 5A6A7A8A9A I OA I 1 A 12A 13A 14A l 5A 16A t7A t 8A 19A2d
+A. The specimen is received fresh labeled and "prostate and bilateralpelvic lymph nodes".
+Weight: 35 g.
+Dimensions: 4.0 x 4.0 x 3.0 cm.
+Seminal vesicles : Right--3.0 x 1.5 x 0.5 cm and left--3.5 x 1.5 x 0.6 cm.
+Grossly evident tumor: None.
+Gross capsular bulge /defect: None.
+Symmetry : Symmetrical.
+Gross nodular hyperplasla : Mild to moderate.
+Lymph Nodes : There is a 6.0 x 5.0 x 1.5 cm collection of robbery and fatty tissue which appears to represent the
+bilateral pelvic lymph nodes. This tissue is sectioned to reveal several rubbery and fatty lymph nodes measuring up to
+3.0 cm in greatest dimension.
+Inking Details : Left - black and right - blue
+Biorepository sample collected : Yes, see block key.
+rage 2of3
+W
+Block Summary for Specimen A:
+1) proximal urethral margin
+2) distal urethral margin
+3) left apical margin
+4) right apical margin
+5) left bladder neck margin
+6) right bladder neck margin
+7) left apical prostate
+8) right apical prostate
+9) left mid prostate
+10) right mid prostate
+11) left mid prostate
+12) right mid prostate
+13) left base of prostate
+14) right base of prostate
+15) left seminal vesicle with junction of prostate
+16) right seminal vesicle with junction of prostate
+17) mirror image of tissue submitted for
+18) one lymph node , bisected.
+19) one lymph node, bisected.
+20) four whole lymph nodes.
+P v 15S dx
+-TG6 A- -:h '- i s G teS4' - y
+Criteria / w 10 ih^Diagnosis Discrepancy
+Primary Tumor Site Discrepancy
+HIPAA Discrepancy
+Prior Malignancy History
+Dual/Synchronous Prima
+Case is {circle):
+ReviewerInitials
+QUALM D QUA IFIED
+DateReviewed:
+5.......••. - ' in this case miy haveinshtded do ta•of iralnwnohist9dt6anist7 tests that were developed and whole pcrltom iflCe chNi lCn$tic$ were delmniosd bl
+her live not been cloned or approved by ties U. S. Food and Drug Adlaiaiaustion004 The OA his detetmined ttot siah claa+ance or epprovM is
+aUOIIad or for research, This Id oulary is courted undo the ClinicalLabors" bap vomeat Astsrahnints of 1988 CCt.IA7 istrot neeiaesry. These teats abottld out be ra8ardad as inwnig
+qu*Mied to peefamhi8h cantpkxiiy 4inicid laboratory tsstlsi ps5c3of3111- - END OF REPORT
+Pase:5'5
+..•,s 7p a^^s., t ..1, ^ r, a, e. .^ 1tA1 .+•ai t .• « • • «,.,.a«r •r..il a li :7:::7 P0.C :>.
+I '"' •'t r^YJ..,v; etrrW. 1 9 1^vsIs,:G1. scpane.- , irrnrsli aj!,`
+'•
+.r :lrY. d +Ll' f:l la l
+r
+t. •r.rK. .^t ,^.tl ..,fl•wG►a.r a.r'rin ••I,•A^•; I'i... .' rrri•.wi^ S,, e
+INI M 3,wlr ii 7G ,ptt h I<n h l c '>1. " ... v or , par ^ repo7f ru . .sybrn im t a TC, :I "
+T
+V.. A104 _F . ]
+•^ML1•4" ^Nii l^^ '^'^LI^l r^^^
+•©r,•r7i•Ew+a• ,li^S'hl 7►7^57• h ': N b, f^fr w . r,av ;w ` .,....,.s..w..r .,a........
+^, .^„ ,.► + t;m,cc^^p?aCecf, f^iri"e^sub^;rttifteedlc,^Il^6.':tr• ~^Ir:•1•.rx•7e.1:_:ra;^
+'Tissue Source Site(TSS)-,
+•r M•r 1,4wrr•,S.rr a ..•ar.,i.r ^x.w:- a r ..._.•....
+'d ;;eed tepe:cvr ( r; ^i!h nhi r iC;d1cz noa^'t,^;.,,.^^:thoo
+s;in rsrst rovi -the o nosis pt 46 11 ,e :u:tfii"..
+'`iT....l Y7. !;.t 1;1'; ^il., .,.^ . :,•.I,'•^51. 1..•1' ...: it • on.•a, ..I .. ^ aa: .. ,'
+9.:3'II'•ila: tn•$,III"I7"e,.j•}9 w$.,.Il••1•••+Mlt ••••: t,r, „r
+TSS Identifier: TSS Unique Patient Identifier,___
+Completed By ( Intorvi wt.w Notrie oilUpon(,'fnkrn);
+# data FMentesit 6a-Alternatives
+pathologic 1)1agnosihh
+Provided on Initial
+Pathology Report
+Hiet ilogic feature:: of
+the sample provided
+for TCCA,tte rcllected
+on the CQCF.
+Provide the reaso n for
+the dbicr'ap"Incy
+hatweeii the pathology
+report and the TCGA
+Case Quality Control
+Form.
+1 rt'3 i'4t 'iC, ,O. '1(xC JO vti Provk c the d1agrtt*4rJitistvlgt;iC sa ty farf.^7 lincir>nented on
+Ft i' -t n., r • dr., t n Out initial ptttlioio y report for this is. If the histology for
+Pro ; AW'a c
+tt
+--4+q%I.
+Name ofTSS Reviewing
+4 Patholo i rtoi'
+Oirar o sltct 1Sireci:or
+Completed Date: r-t
+this case Is mixed, prnvideall li!ited subtypes.
+Working instructions
+l'rovkk thc•gir . features selected on theTCCA Cage
+Quality coolant Point rr mrletad for this caw.
+l7rovictait re;wandl~SCTii^tttl;why tfx; dhAPONISOnOldinitial
+pathology t olsnrt for this case Is not caesixt't•tti with thediiianovir sekcted on ttw TCGACo."Quality Control Form.
+41 i the name of the viithok,g,$t whoa erwiewed ,,,scats
+farTr0A.
+I ac`kduwk:dge that theof eveIrt/t,rw lion pr wtdedby thy f tgdtation is trryedratovrr i and fna bar,,, guahty cmitrelrcxL
+T3z5re view ingPathologist or13iorepo story Directs >r Dote
+I u4'knuwrildjethat the above iaJbrlmatlon nrm+fdedIV nj iraetltrrlttrn la true and corrtrCC anf hasbeen quality Controlled, 'the Atatr+rlarit t^athult lst nr the
+►iapar►trnent Chatrmeu liar heon Iisfnrr *1 or is aware of thelabovedhcrepang In dfagnvserr.
+;,,. ,,.,,.,,, ...&r...,tigatorSignature
