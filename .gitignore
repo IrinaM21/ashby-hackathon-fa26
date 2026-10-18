@@ -12,3 +12,5 @@ __pycache__/
 
 weights/
 musk_fp16.pt
+# CONCH repo
+CONCH/
