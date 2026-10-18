@@ -273,7 +273,7 @@ def build_rubric(primary_dx, draft):
 # Main
 # ---------------------------------------------------------------------------
 
-def build_case(case, model, slides_dir, work):
+def build_case(case, model, slides_dir, work, min_report_chars=0):
     sid = case["submitter_id"]
     print(f"\n== {sid}")
     report_file, slide_file = case_files(sid)
@@ -287,6 +287,9 @@ def build_case(case, model, slides_dir, work):
     pdf = download(report_file["file_id"], work / report_file["file_name"])
     text, text_source = report_text(pdf, model)
     print(f"   report: {len(text)} chars ({text_source})")
+    if len(text) < min_report_chars:
+        print(f"   skipped: report shorter than {min_report_chars} chars, rubric would be thin")
+        return None
     reports_dir = DATA / "reports"
     reports_dir.mkdir(parents=True, exist_ok=True)
     (reports_dir / f"{sid}.txt").write_text(text)
@@ -341,6 +344,8 @@ def main(argv=None):
     p.add_argument("--slides-dir", help="folder with preloaded .svs files (searched recursively)")
     p.add_argument("--model", default=DEFAULT_MODEL)
     p.add_argument("--no-model", action="store_true", help="skip OCR and rubric drafting (no GPU needed)")
+    p.add_argument("--min-report-chars", type=int, default=1500,
+                   help="skip cases whose report text is shorter than this (0 keeps all)")
     p.add_argument("--append", action="store_true", help="add to cases.json instead of replacing it")
     p.add_argument("--out", default=str(DATA / "cases.json"))
     p.add_argument("--work-dir", default=str(DATA / ".tcga_downloads"))
@@ -356,7 +361,7 @@ def main(argv=None):
     for case in cases:
         if len(built) >= (len(args.case_ids) if args.case_ids else args.n):
             break
-        c = build_case(case, model, args.slides_dir, work)
+        c = build_case(case, model, args.slides_dir, work, args.min_report_chars)
         if c:
             built.append(c)
 
