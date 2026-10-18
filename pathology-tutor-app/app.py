@@ -16,6 +16,10 @@ from pathlib import Path
 import gradio as gr
 
 import grader
+from utils import Utils
+import logging
+
+log = logging.getLogger(__name__)
 
 DATA = Path(__file__).parent / "data"
 CASES = json.loads((DATA / "cases.json").read_text())["cases"]
@@ -133,6 +137,17 @@ def submit_report(session, findings, diagnosis, differentials, ancillary, confid
     reveal += "**Ancillary results:**\n" + "\n".join(f"- {k}: {v}" for k, v in case["ancillary_results"].items())
     reveal += "\n\n**References:**\n" + "\n".join(f"- {r}" for r in case["references"])
 
+    overlay_img = None
+    if case.get("heatmap"):                       # render_heatmap raises KeyError without it
+        try:
+            overlay_img = Utils.render_heatmap(case, data_dir=DATA)
+        except Exception:
+            log.exception("heatmap render failed for %s", case["id"])
+    if overlay_img is not None:
+        reveal += ("\n\n**Model attention:** red marks regions an image-text model matched more closely "
+                   "to the expert diagnosis, and blue marks weaker or no match. The greyed area was not "
+                   "analysed; the white box is the region the model saw. This is an automatically "
+                   "generated, approximate guide. It is not a pathologist's annotation.")
     history = history + [[case["title"], f"{result['percent']}%", fmt_clock(elapsed), "🚩" if flag else ""]]
 
     return (
@@ -142,6 +157,7 @@ def submit_report(session, findings, diagnosis, differentials, ancillary, confid
         score, sections, checklist, feedback, flag, reveal,
         history, history,
         gr.Button(interactive=False),
+        gr.Image(value=overlay_img, visible=overlay_img is not None),
     )
 
 
@@ -192,6 +208,8 @@ with gr.Blocks(title="Pathology Report Tutor") as demo:
                                     interactive=False, wrap=True, label="Rubric checklist")
         with gr.Accordion("Reveal expert answer", open=False):
             reveal_md = gr.Markdown()
+            heatmap_img = gr.Image(label="Model attention (white box = region analysed)",
+                                   type="pil", interactive=False, visible=False, height=420)
 
     with gr.Accordion("This session's scores", open=False):
         history_df = gr.Dataframe(headers=["Case", "Score", "Time", "Flagged"], interactive=False)
@@ -206,7 +224,7 @@ with gr.Blocks(title="Pathology Report Tutor") as demo:
         submit_report,
         inputs=[session, findings, diagnosis, differentials, ancillary, confidence, history],
         outputs=[session, timer, results_panel, score_md, sections_df, checklist_df, feedback_md,
-                 flag_md, reveal_md, history, history_df, submit_btn],
+                 flag_md, reveal_md, history, history_df, submit_btn, heatmap_img],
     )
 
 

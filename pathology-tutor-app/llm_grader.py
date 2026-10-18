@@ -20,6 +20,7 @@ import io
 import json
 import logging
 import os
+import re                                  # NEW: leak guard
 from pathlib import Path
 
 import requests
@@ -36,6 +37,9 @@ MAX_IMAGE_EDGE = 1568                  # downscale large slides before upload
 VALID_STATUS = {"present", "partial", "missing"}
 
 _CACHE = {}                            # (case, report) -> checklist, for reproducible regrades
+_EVIDENCE_CACHE = {}                   # NEW: case id -> rendered evidence, so we render once
+
+LEAK_PATTERN = re.compile(r"heat ?map|highlight|overlay|grad-?cam|red (area|region|tint|zone)", re.I)
 
 SYSTEM_PROMPT = """You grade a pathology trainee's report against a rubric.
 
@@ -130,14 +134,83 @@ def _call_claude(content, output_config, system=None, max_tokens=16000):
     text = next(b["text"] for b in data["content"] if b["type"] == "text")
     return json.loads(text.strip())
 
-
-def _image_block(path):
-    img = Image.open(path).convert("RGB")
+# CHANGED: encoding split out so an in-memory PIL image (the overlay) can be sent too
+def _pil_block(img):
+    img = img.convert("RGB")
     img.thumbnail((MAX_IMAGE_EDGE, MAX_IMAGE_EDGE))
     buf = io.BytesIO()
     img.save(buf, format="JPEG", quality=90)
     data = base64.standard_b64encode(buf.getvalue()).decode()
     return {"type": "image", "source": {"type": "base64", "media_type": "image/jpeg", "data": data}}
+
+
+def _image_block(path):
+    return _pil_block(Image.open(path))
+
+# NEW: turn the stored 28x28 grid into an overlay image plus the instructions Claude needs
+def _evidence_for(case):
+    """Return (evidence_id, content_blocks, extra_system_rules), or None if unavailable.
+
+    Never raises: the heatmap is an optional extra and must not break grading.
+    """
+    if not (USE_VISUAL_EVIDENCE and SEND_IMAGE):
+        return None
+    hm = case.get("heatmap")
+    if not hm:
+        return None
+    if case["id"] in _EVIDENCE_CACHE:
+        return _EVIDENCE_CACHE[case["id"]]
+
+    try:
+        path = DATA_DIR / case["image"]
+
+        # The map is only valid for the exact image it was made from.
+        if hashlib.sha256(path.read_bytes()).hexdigest() != hm.get("image_sha256"):
+            log.warning("Heatmap skipped for %s: image hash mismatch (if this always "
+                        "happens, check how image_sha256 was computed)", case["id"])
+            return None
+
+        img = Image.open(path).convert("RGB")
+        x0, y0, x1, y1 = hm["crop_box"]
+        if x1 > img.width or y1 > img.height:
+            log.warning("Heatmap skipped for %s: crop_box outside image", case["id"])
+            return None
+
+        region = img.crop((x0, y0, x1, y1))
+        grid = hm["grid"]
+        heat = Image.new("L", (len(grid[0]), len(grid)))
+        heat.putdata([min(255, max(0, round(255 * v))) for row in grid for v in row])
+        heat = heat.resize(region.size, Image.Resampling.BILINEAR)
+        mask = heat.point(lambda p: int(p * OVERLAY_ALPHA))      # 0 stays fully clear
+        region.paste(Image.new("RGB", region.size, (255, 0, 0)), (0, 0), mask)
+
+        blocks = [
+            {"type": "text", "text": f"Visual evidence: the next image is the central region of "
+                                     f"the slide above (original pixels x={x0}-{x1}, y={y0}-{y1}) "
+                                     f"with the red tint described in the rules."},
+            _pil_block(region),
+        ]
+        rules = f"""
+
+Visual evidence (a second image follows the slide):
+- It shows part of the slide with a red tint where a pathology image-text model matched the
+  image more to the expert diagnosis text than to "{hm.get("contrast_text", "normal tissue")}".
+  Stronger red means a stronger match.
+- It is a noisy, automatically generated hint that can be wrong, and it covers only part of the slide.
+- Untinted areas carry no information. Do not treat them as normal or as evidence that something is absent.
+- Use it only for findings and diagnosis items, and only to judge whether the trainee's description
+  of the tissue is plausible for this slide.
+- Never mark an item missing or lower its status because the trainee described something outside
+  the tinted areas.
+- Never mention the tint, highlights, heatmap or overlay in a reason. Reasons are shown to the trainee."""
+
+        evidence_id = f'{hm.get("method", "heatmap")}:{hm["image_sha256"][:12]}'
+        result = (evidence_id, blocks, rules)
+        _EVIDENCE_CACHE[case["id"]] = result
+        return result
+    except Exception:
+        log.exception("Could not build heatmap evidence for %s", case.get("id"))
+        return None
 
 
 def _user_text(case, report):
@@ -161,6 +234,14 @@ DIFFERENTIALS: {report.get("differentials", "")}
 ANCILLARY: {report.get("ancillary", "")}
 </trainee_report>"""
 
+# NEW: replace student-facing reasons that mention the heatmap machinery
+def _clean_reason(reason):
+    reason = str(reason)[:300]
+    if LEAK_PATTERN.search(reason):
+        log.warning("Reason mentioned heatmap evidence; replaced: %s", reason)
+        return "Assessed from the written report."
+    return reason
+
 
 def _validate(case, raw_items):
     """Require every rubric id, drop unknown ones, coerce bad statuses to 'missing'."""
@@ -176,19 +257,29 @@ def _validate(case, raw_items):
 
 
 def modelchecklist(case, report):
-    key = hashlib.sha256(json.dumps([case["id"], report], sort_keys=True).encode()).hexdigest()
+    evidence = _evidence_for(case)                                   # NEW
+    evidence_id = evidence[0] if evidence else None                  # NEW
+
+    # CHANGED: key now covers everything that can change the grade
+    key = hashlib.sha256(json.dumps(
+        [case["id"], report, CLAUDE_MODEL, SEND_IMAGE, evidence_id], sort_keys=True
+    ).encode()).hexdigest()
     if key in _CACHE:
         return _CACHE[key]
 
     content = []
     if SEND_IMAGE:
         content.append(_image_block(DATA_DIR / case["image"]))
+    if evidence:                                                     # NEW
+        content.extend(evidence[1])
     content.append({"type": "text", "text": _user_text(case, report)})
+
+    system = SYSTEM_PROMPT + (evidence[2] if evidence else "")      # NEW
 
     last_err = None
     for attempt in range(2):                          # one retry, then raise
         try:
-            data = _call_claude(content, CHECKLIST_FORMAT, system=SYSTEM_PROMPT)
+            data = _call_claude(content, CHECKLIST_FORMAT, system=system)   # CHANGED: system
             result = _validate(case, data["items"])
             _CACHE[key] = result
             return result
@@ -196,6 +287,38 @@ def modelchecklist(case, report):
             last_err = e
             log.warning("Checklist attempt %d failed: %s", attempt + 1, e)
     raise last_err
+
+
+model_checklist = modelchecklist       # NEW: grader.py calls the underscore name
+
+
+def grade_text_only(case, report):
+    """Grade the student's analysis by CONCH match percent to the expert's, and have Claude explain it."""
+    student = f'Diagnosis: {report.get("diagnosis", "")}\nFindings: {report.get("findings", "")}'
+    ans = case["expert_answer"]
+    expert = f'Diagnosis: {ans["diagnosis"]}\nFindings: {ans["summary"]}'
+    clinical = "\n".join(f"{k}: {v}" for k, v in case["clinical"].items())
+
+    m_pct = round(match_percent(student, expert))
+
+    prompt = f"""You are a pathology tutor. Given the image (patch of scanned slide sample),
+                case details, the student's analysis, the ground-truth analysis, and the student's
+                grade (% match to expert), explain the student's grade.
+
+                <case details>{clinical}</case details>
+                <student analysis>{student}</student analysis>
+                <expert analysis>{expert}</expert analysis>
+                <grade>{m_pct}%</grade>
+
+                Respond in 4-5 sentences. Point to specific details in the student and expert
+                responses."""
+
+    content = [
+        _image_block(DATA_DIR / case["image"]),
+        {"type": "text", "text": prompt},
+    ]
+    data = _call_claude(content, EXPLANATION_FORMAT)
+    return {"match_percent": m_pct, "explanation": data["explanation"]}
 
 
 def grade_text_only(case, report):
