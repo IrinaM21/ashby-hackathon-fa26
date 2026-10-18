@@ -10,7 +10,7 @@ import torch.nn.functional as F
 from huggingface_hub import hf_hub_download
 from PIL import Image, ImageDraw
 from timm.models import create_model
-from conch.open_clip_custom import create_model_from_pretrained, get_tokenizer, tokenize
+from conch.open_clip_custom import create_model_from_pretrained, get_tokenizer
 
 from musk import utils as musk_utils
 from musk import modeling  # noqa: F401  registers musk_large_patch16_384 with timm
@@ -81,6 +81,22 @@ class Utils:
             model.text_decoder.load_state_dict(torch.load(decoder_path, map_location=device), strict=True)
         model.eval()
         return model, preprocess
+
+    @staticmethod
+    def conch_tokenize(tokenizer, texts):
+        """Same token ids as conch.open_clip_custom.tokenize, which needs transformers<5 (batch_encode_plus).
+
+        CONCH's context is 128 tokens, with the last reserved for <cls>: encode to 127, then pad one more.
+        """
+        ids = tokenizer(
+            list(texts),
+            max_length=127,
+            add_special_tokens=True,
+            return_token_type_ids=False,
+            truncation=True,
+            padding="max_length",
+        )["input_ids"]
+        return F.pad(torch.tensor(ids), (0, 1), value=tokenizer.pad_token_id)
 
     @staticmethod
     def save_conch_weights(path=CONCH_LOCAL_PATH, decoder_path=CONCH_DECODER_PATH, dtype=torch.float32, seed=0):
@@ -179,7 +195,7 @@ class Utils:
     @torch.no_grad()
     def _conch_text_embedding(model, text):
         device = next(model.parameters()).device
-        return model.encode_text(tokenize(texts=[text], tokenizer=get_tokenizer()).to(device), normalize=True)
+        return model.encode_text(Utils.conch_tokenize(get_tokenizer(), [text]).to(device), normalize=True)
 
     @staticmethod
     def _heatmap_direction(model, text, contrast_text):

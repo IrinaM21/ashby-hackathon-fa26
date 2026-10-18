@@ -1,7 +1,7 @@
 # confidence.py
 import re, torch
 from PIL import Image
-from conch.open_clip_custom import get_tokenizer, tokenize  # verify against repo
+from conch.open_clip_custom import get_tokenizer
 
 from utils import Utils
 
@@ -15,7 +15,7 @@ def _split(text):
 @torch.no_grad()
 def embed_texts(texts):
     """(len(texts) x D) normalized CONCH text embeddings."""
-    return _model.encode_text(tokenize(texts=texts, tokenizer=_tok).to(_device), normalize=True)
+    return _model.encode_text(Utils.conch_tokenize(_tok, texts).to(_device), normalize=True)
 
 def build_pool(texts):
     """Precompute caption embeddings for score_findings' softmax pool."""
