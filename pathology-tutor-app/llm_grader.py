@@ -208,16 +208,16 @@ def grade_text_only(case, report):
     m_pct = round(match_percent(student, expert))
 
     prompt = f"""You are a pathology tutor. Given the image (patch of scanned slide sample),
-case details, the student's analysis, the ground-truth analysis, and the student's
-grade (% match to expert), explain the student's grade.
+                case details, the student's analysis, the ground-truth analysis, and the student's
+                grade (% match to expert), explain the student's grade.
 
-<case details>{clinical}</case details>
-<student analysis>{student}</student analysis>
-<expert analysis>{expert}</expert analysis>
-<grade>{m_pct}%</grade>
+                <case details>{clinical}</case details>
+                <student analysis>{student}</student analysis>
+                <expert analysis>{expert}</expert analysis>
+                <grade>{m_pct}%</grade>
 
-Respond in 4-5 sentences. Point to specific details in the student and expert
-responses."""
+                Respond in 4-5 sentences. Point to specific details in the student and expert
+                responses."""
 
     content = [
         _image_block(DATA_DIR / case["image"]),

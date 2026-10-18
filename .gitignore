@@ -14,3 +14,6 @@ weights/
 musk_fp16.pt
 # CONCH repo
 CONCH/
+
+# Local heatmap viewer
+pathology-tutor-app/test-masking.py
