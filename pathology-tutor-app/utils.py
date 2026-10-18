@@ -4,6 +4,7 @@ import torch
 import torch.nn.functional as F
 from huggingface_hub import hf_hub_download
 from timm.models import create_model
+from conch.open_clip_custom import create_model_from_pretrained
 
 from musk import utils as musk_utils
 from musk import modeling  # noqa: F401  registers musk_large_patch16_384 with timm
@@ -44,7 +45,24 @@ class Utils:
         model.to(device=device, dtype=dtype)
         model.eval()
         return model
-    
+
+    CONCH_REPO_ID = "MahmoodLab/conch"
+    CONCH_FILENAME = "pytorch_model.bin"
+    CONCH_MODEL_CFG = "conch_ViT-B-16"
+
+    @staticmethod
+    def load_conch(device=None):
+        """Load the pretrained CONCH model from https://huggingface.co/MahmoodLab/conch.
+
+        Returns (model, preprocess), where preprocess turns a PIL image into the model's input tensor.
+        """
+        device = torch.device(device) if device is not None else Utils.get_device()
+        ckpt_path = hf_hub_download(Utils.CONCH_REPO_ID, filename=Utils.CONCH_FILENAME, token=Utils.get_hf_token())
+
+        model, preprocess = create_model_from_pretrained(Utils.CONCH_MODEL_CFG, checkpoint_path=ckpt_path, device=device)
+        model.eval()
+        return model, preprocess
+
     @staticmethod
     def _generated_token_probs(model_output):
         """Return (generated_ids, token_probs), each (batch, steps), for every generated step."""

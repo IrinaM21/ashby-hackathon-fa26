@@ -1,5 +1,6 @@
 gradio>=6.0,<7
 pillow
+requests
 # utils.py (MUSK)
 torch==2.0.1
 torchvision==0.15.2

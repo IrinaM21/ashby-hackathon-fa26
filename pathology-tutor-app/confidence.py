@@ -1,13 +1,12 @@
 # confidence.py
 import re, torch
 from PIL import Image
-from conch.open_clip_custom import create_model_from_pretrained, get_tokenizer, tokenize  # verify against repo
+from conch.open_clip_custom import get_tokenizer, tokenize  # verify against repo
 
 from utils import Utils
 
 _device = Utils.get_device()
-_model, _preprocess = create_model_from_pretrained("conch_ViT-B-16", "hf_hub:MahmoodLab/conch")
-_model.eval().to(_device)
+_model, _preprocess = Utils.load_conch(_device)
 _tok = get_tokenizer()
 
 def _split(text):
