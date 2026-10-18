@@ -1,0 +1,114 @@
+lG' -CollectionDare. 0 3
+C 3 a. 9 i/ate/i i ^„in,rIW; nt 05,
+PATIENT HISTORY:
+The patient is a -old female . Date of last menstrual period: Not given.
+PRE OP DIAGNOSIS:Breast cancer.
+POST OP DIAGNOSIS: Same.
+PR jDURE: Right sentinel node biopsy, right segmental mastectomy.
+FINAL DIAGNOSIS:PART 1: RIGHTSENTINEL LYMPH NODE #1, BIOPSY -
+ONE LYMPH NODE, NEGATIVE FOR TUMOR (011).
+PART 2: RIGHT NON-SENTINEL LYMPH NODE#2, BIOPSY -
+FIBROADIPOSE TISSUE, NO LYMPH NODE IDENTIFIED.
+PART 3: RIGHT NON-SENTINEL LYMPH NODE#1, BIOPSY -
+ONE LYMPH NODE, NEGATIVE FOR TUMOR (011).
+PART 4: RIGHT NON-SENTINEL LYMPH NODE #3, BIOPSY -
+ONE LYMPH NODE, NEGATIVE FOR TUMOR (011).
+PART 5: RIGHT SENTINEL LYMPH NODE #2, BIOPSY -
+ONE LYMPH NODE, NEGATIVE FOR TUMOR (0/1).
+CrIteria
+UUID:F70DE761-F081-4F4C-AD22-9A166CF78CA8
+III I
+IIITCGA-BH-A1F5-01A-PR Redacted
+IIII I II I III IIII II IIIIII II III III IIIIIIIII10I 1111111111111III
+III IIIIIIIIIIII111IIIIII1111111111IIIIIIIIIUIIIIIIIIIIIIIIIIIIIIII IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+Diagnosis Dir_repancy
+Primary Tumor Site Discrcnrncy
+HIPM Ciscrep.ncy
+Prior Malignancy H;.tory
+Dual/Sjnchronous Primary Notej
+C.r, Ia ((dm1,):
+Review,, Initials
+PART 6: RIGHT SENTINEL LYMPH NODE #3, BIOPSY -
+ONE LYMPH NODE, NEGATIVE FOR TUMOR (011).
+PART 7: RIGHT BREAST, BIOPSIES X 4 -
+A. ONE OUT OF 4 LYMPH NODES POSITIVE FOR METASTATIC CARCINOMA (114).
+B. BENIGN FIBROADIPOSE TISSUE (see comment).
+Yes I No
+PART 8: RIGHT BREAST, SEGMENTAL MASTECTOMY -
+A. INFILTRATING DUCT CARCINOMA. 1.4 CMIN GREATESTDIMENSION AS MEASUREDON THE SLIDE,
+NOTTINGHAM SCORE 719 (TUBULES 3, NUCLEI 3, MITOSIS 1) ASSOCIATED WITH MICROCALCIFICATIONS.
+B. LYMPHOVASCULAR INVASION IDENTIFIED.
+C. DUCTAL CARCINOMA IN SITU, SOLID AND CRIBRIFORMTYPE, NUCLEAR GRADE 2 ASSOCIATED WITH
+MICROCALCIFICATIONSAND COMPRISINGLESS THAN5% OF TUMOR.
+D. SURGICAL MARGINSNEGATIVE.
+E. INFILTRATING DUCT CARCINOMA APPROACHESANTERIOR MARGIN WITHIN 0.3 CM.
+F. CHANGES CONSISTENT WITH PREVIOUS CORE BIOPSY SITE.
+G. TUMOR IS ESTROGEN RECEPTOR POSITIVE,PROGE, .TERONERECEPTOR POSITIVE AND HERNEU
+hEGATIV AS PER PREVIOUS CORE BIOPSY REPC$ T.
+H. UNREMARKABLE SKIN.
+1. FIBROCYSTIC CHANGES.
+COMMENT:
+One lymph node in specimen number 7 contains micrometastatic carcinoma that measures less than 0.2 cm in diameter.
+MICROSCOPIC:
+A. Laterality: 1
+1. Right 2. Left
+B. Procedure: 1
+SYNOPTIC - PRIMARY INVASIVE CARCINOMA OF BREAST
+1. Segmentectomy 3. Modified radical mastectomy
+2. Simple mastectomy 4. Re-excision
+C. Location:
+1. Central subareolar 4. LOQ
+2. UOQ 5. LIQ
+3. UIQ 6. Not specified
+0. Size of tumor (maximum dimension invasivecomponentby gross or microscopic exam): 1.4 cm
+E. Type(invasive component): 1
+1. Ductal, NOS S. Cribriform 9. Metaplastic
+2. Tubular S. Papillary 10. Other
+3. Mucinous 7. Lobular
+4. Medullary 8. Carcinoid like
+F. If lobular carcinoma, specify type:NLA
+1'. Classical 4. Signet ring 7. Pleomorphic
+2. Solid 5. Trabecular
+3. Alveolar 6. Tubulobular
+G. Nottingham Score:
+G1. Nuclear grade:
+G2. Tubule formation:
+G3. Mitotic activity score: 1
+G4. Total Nottingham score:7
+G5. Nottingham grade(1, 2,3)'
+H. Angiolymphatic invasion: 2
+1.No 2. Yes
+1. Dermal lymphatic invasion: 2
+1. Yes 2 . No 3. Not applicable
+J. Calcification: I
+1. No 2 . Yes - benign zones 3. Yes - malignant zones
+K. Type of in situ component: 11 / 22
+1. Cribriform 4. Micropapillary 7. Lobular
+2. Solid 5 . Apocrine
+3. Papillary 6. Comedo
+L. Percentage of tumor occupied by in situ component: <5%
+M. Surgical margins involved by invasive component: 1
+1 No 2. Yes - focal 3. Yes - diffuse
+N. Surgical margins involved by in situcomponent: 1
+1. No 2. Yes - focal 3. Yes - diffuse0. Paget's diseaseof nipple: N/A
+1. Yes 2.No
+P. Number of positive lymph nodes. 1
+Q. Total number of lymph nodes examined: 9
+R. Sentinel node metastasis: 2 -
+1. Yes 2. No
+S. Only micrometastases to lymph nodes (none larger than 0.2 cm): 1
+1. Yes 2.No
+T. Metastasis es to a lymph node 2 cm. or more in greatest dimension:
+1. Yes 2.No
+U. Lymph node metastasis/es with extracapsular extension: 2
+1. Yes 2. No `
+V. Metastases to ipsilateral internal mammary lymph node (if applicable): N/A
+1. Yes 2.No
+W. Skin involved (ulceration): 2
+1. Yes 2. No
+X. Non-neoplastic breast tissue: 6
+1. ADH 4. Fibroadenoma 7. LCIS
+2. ALH S. Papilloma B. Other3. Radical scar 6. FCD
+Y. Multicentricity/multifocality of invasive foci:
+1. Yes 2.No
+Z. TNM stage: T1c N 1mi M X
