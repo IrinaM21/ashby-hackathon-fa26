@@ -130,6 +130,13 @@ def submit_report(session, findings, diagnosis, differentials, ancillary, confid
     else:
         flag = ""
 
+    tutor = result.get("tutor_feedback")
+    if tutor and tutor.get("explanation"):
+        tutor_md_text = (f"### Tutor feedback\n**Match to expert (approximate): {tutor['match_percent']}%**\n\n"
+                         f"{tutor['explanation']}")
+    else:
+        tutor_md_text = "### Tutor feedback\n*Tutor feedback isn't available for this report.*"
+
     ans = case["expert_answer"]
     reveal = f"**Expert diagnosis:** {ans['diagnosis']}\n\n{ans['summary']}\n\n"
     if result["missed"]:
@@ -158,6 +165,7 @@ def submit_report(session, findings, diagnosis, differentials, ancillary, confid
         history, history,
         gr.Button(interactive=False),
         gr.Image(value=overlay_img, visible=overlay_img is not None),
+        tutor_md_text,
     )
 
 
@@ -204,6 +212,7 @@ with gr.Blocks(title="Pathology Report Tutor") as demo:
         with gr.Row():
             sections_df = gr.Dataframe(headers=["Section", "Points"], interactive=False, label="By section", scale=1)
             feedback_md = gr.Markdown()
+        tutor_md = gr.Markdown()
         checklist_df = gr.Dataframe(headers=["Section", "Rubric item", "Status", "Points", "Why"],
                                     interactive=False, wrap=True, label="Rubric checklist")
         with gr.Accordion("Reveal expert answer", open=False):
@@ -224,7 +233,7 @@ with gr.Blocks(title="Pathology Report Tutor") as demo:
         submit_report,
         inputs=[session, findings, diagnosis, differentials, ancillary, confidence, history],
         outputs=[session, timer, results_panel, score_md, sections_df, checklist_df, feedback_md,
-                 flag_md, reveal_md, history, history_df, submit_btn, heatmap_img],
+                 flag_md, reveal_md, history, history_df, submit_btn, heatmap_img, tutor_md],
     )
 
 

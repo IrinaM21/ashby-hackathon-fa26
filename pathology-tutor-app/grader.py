@@ -17,12 +17,13 @@ from pathlib import Path
 from utils import Utils
 import logging
 from confidence import score_findings, build_pool, match_percent   # import the functions, NOT `import confidence`
-from llm_grader import modelchecklist
+from llm_grader import modelchecklist, grade_text_only
 
 log = logging.getLogger(__name__)
 
 # Model-confidence settings. Set COS_THRESH from your student-style calibration set.
 USE_CONCH = True
+USE_TUTOR_FEEDBACK = True  # Claude's Socratic explanation of the match percent (needs ANTHROPIC_API_KEY)
 COS_THRESH = 0.20          # PLACEHOLDER: tune on real student-style findings
 LOW_FRACTION = 0.5         # flag if more than this share of sentences fall below COS_THRESH
 CONF_SELF_RATING = 4       # student confidence at or above this counts as "confident"
@@ -197,6 +198,14 @@ def grade_report(case, report, elapsed_s=None):
             scored["match_percent"] = round(match_percent(student_text, f"{ans['diagnosis']}. {ans['summary']}"))
         except Exception:
             log.exception("CONCH match scoring failed for case %s", case.get("id"))
+
+    # --- Claude's Socratic explanation of the match, shown before the reveal (never blocks grading) ---
+    scored["tutor_feedback"] = None
+    if USE_TUTOR_FEEDBACK and student_text:
+        try:
+            scored["tutor_feedback"] = grade_text_only(case, report)
+        except Exception:
+            log.exception("Tutor feedback failed for case %s", case.get("id"))
 
     if model_conf:
         low = [s for s in model_conf if s["cosine"] < COS_THRESH]
