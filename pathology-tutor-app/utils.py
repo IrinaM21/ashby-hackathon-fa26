@@ -428,7 +428,6 @@ class Utils:
         print("wrote", cases_path)
 
     # Jet-style color map anchors: blue (low) -> cyan -> green -> yellow -> red (high).
-    # Jet-style color map anchors: blue (low) -> cyan -> green -> yellow -> red (high).
     _HEATMAP_STOPS = [0.0, 0.25, 0.5, 0.75, 1.0]
     _HEATMAP_COLORS = np.array([[0, 0, 255], [0, 255, 255], [0, 255, 0], [255, 255, 0], [255, 0, 0]], dtype=np.float32)
 

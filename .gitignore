@@ -1,19 +1,16 @@
-# MUSK repo
 MUSK/
 
-# Virtual environments
 avenv/
 venv/
 .venv/
 
-# Python cache
 __pycache__/
 *.py[cod]
 
 weights/
-musk_fp16.pt
-# CONCH repo
+
 CONCH/
 
-# Local heatmap viewer
 pathology-tutor-app/test-masking.py
+
+llm_grader_1.py

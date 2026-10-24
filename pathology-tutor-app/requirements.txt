@@ -9,8 +9,10 @@ numpy==1.26.4
 huggingface-hub
 safetensors
 einops
-# confidence.py (CONCH); transformers 5.x removed batch_encode_plus, which CONCH's tokenizer uses
-transformers==4.40.2
+# confidence.py (CONCH). Only tokenizers are used, so transformers 5.x is fine with torch 2.0.1
+# (it prints "Disabling PyTorch"); Utils.conch_tokenize replaces CONCH's tokenize, which needs transformers<5.
+# transformers<5 conflicts with gradio 6 (huggingface-hub <1.0 vs >=1.16).
+transformers>=5
 conch @ git+https://github.com/Mahmoodlab/CONCH.git
 # Added when the model is plugged in (pin versions once they work):
 # torch
